@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    @apply flex;
+    @apply min-h-full;
+    @apply flex-1;
+    @apply flex-col;
+    @apply justify-center;
+    @apply px-6;
+    @apply py-6;
+    @apply mt-40;
+    @apply lg:px-8;
+  }
+}
+
+@layer utilities {
+  .h2 {
+    @apply mt-5;
+    @apply text-center;
+    @apply text-2xl;
+    @apply font-bold;
+    @apply leading-9;
+    @apply tracking-tight;
+    @apply text-gray-900;
+  }
+
+  .h3 {
+    @apply text-3xl;
+    @apply font-normal;
+  }
+
+  .p {
+    @apply text-base2;
+  }
+
+  .img {
+    @apply w-60;
+    @apply aspect-square;
+    @apply rounded-xl;
+    @apply hover:scale-105;
+    @apply transition-all;
+    @apply ease-in-out;
+    @apply object-cover;
+  }
+
+  .span {
+    @apply text-base3;
+  }
+
+  .after {
+    @apply after:content-[''];
+    @apply after:h-1;
+    @apply after:w-32;
+    @apply after:bg-yellow;
+    @apply after:absolute;
+    @apply after:top-14;
+    @apply after:right-64;
+  }
+
+  .before {
+    @apply before:content-[''];
+    @apply before:h-1;
+    @apply before:w-32;
+    @apply before:bg-yellow;
+    @apply before:absolute;
+    @apply before:top-14;
+    @apply before:left-64;
+  }
+}
