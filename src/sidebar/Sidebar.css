@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-sidebar {
+    @apply mt-6;
+    @apply flex;
+    @apply flex-col;
+    @apply justify-between;
+    @apply flex-1;
+  }
+
+  .sidebar {
+    @apply flex;
+    @apply flex-col;
+    @apply flex-col;
+    @apply sticky;
+    @apply top-0;
+    @apply h-screen;
+    @apply px-4;
+    @apply py-8;
+    @apply bg-indigo-600;
+    @apply overflow-x-hidden;
+  }
+
+  .logo {
+    @apply w-10;
+    @apply h-auto;
+    @apply flex;
+    @apply text-gray-100;
+    @apply font-medium;
+    @apply gap-2;
+  }
+
+  .searchbar {
+    @apply relative;
+    @apply mt-6;
+  }
+
+  .dashboard {
+    @apply flex;
+    @apply items-center;
+    @apply px-4;
+    @apply py-2;
+    @apply text-gray-200;
+    @apply rounded-lg;
+    @apply transition-colors;
+    @apply duration-300;
+    @apply transform;
+    @apply hover:bg-gray-800;
+    @apply bg-gray-800;
+    @apply cursor-pointer;
+  }
+
+  .users,
+  .products,
+  .settings {
+    @apply flex;
+    @apply items-center;
+    @apply px-4;
+    @apply py-2;
+    @apply text-gray-200;
+    @apply rounded-lg;
+    @apply mt-5;
+    @apply transition-colors;
+    @apply duration-300;
+    @apply transform;
+    @apply hover:bg-gray-800;
+    @apply cursor-pointer;
+  }
+
+  .logout {
+    @apply flex;
+    @apply items-center;
+    @apply border;
+    @apply bg-gray-800;
+    @apply py-2;
+    @apply rounded-lg;
+    @apply border-gray-900;
+    @apply px-4;
+    @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .input {
+    @apply py-2;
+    @apply pl-10;
+    @apply pr-4;
+    @apply placeholder-gray-300;
+    @apply border;
+    @apply border-gray-800;
+    @apply rounded-lg;
+    @apply bg-gray-800;
+    @apply text-gray-100;
+    @apply focus:border-blue-400;
+    @apply focus:ring-blue-300;
+    @apply focus:ring-opacity-40;
+    @apply focus:outline-none;
+    @apply focus:ring;
+  }
+}

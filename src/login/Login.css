@@ -9,7 +9,7 @@
 }
 
 @layer components {
-  .container {
+  .container-login {
     @apply mt-28;
     @apply bg-gray-100;
     @apply w-2/5;

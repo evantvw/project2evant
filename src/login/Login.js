@@ -3,7 +3,7 @@ import "./Login.css";
 const Login = () => {
   return (
     <>
-      <div className="container">
+      <div className="container-login">
         <img
           className="mx-auto h-10 w-auto"
           src="\logo\technopedia.png"
