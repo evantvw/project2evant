@@ -49,7 +49,6 @@
     @apply duration-300;
     @apply transform;
     @apply hover:bg-gray-800;
-    @apply bg-gray-800;
     @apply cursor-pointer;
   }
 
@@ -73,11 +72,12 @@
   .logout {
     @apply flex;
     @apply items-center;
-    @apply border;
+    /* @apply border; */
+    @apply hover:bg-gray-900;
     @apply bg-gray-800;
     @apply py-2;
     @apply rounded-lg;
-    @apply border-gray-900;
+    /* @apply border-gray-700; */
     @apply px-4;
     @apply cursor-pointer;
   }

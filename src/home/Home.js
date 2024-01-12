@@ -1,11 +1,10 @@
 import List from "../list/List";
-import Sidebar from "../sidebar/Sidebar";
 import "./Home.css";
 
 const Home = () => {
   return (
     <div className="flex bg-gray-100">
-      <Sidebar />
+      {/* <Sidebar /> */}
       <List />
     </div>
   );
