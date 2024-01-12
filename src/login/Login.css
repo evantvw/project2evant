@@ -17,6 +17,43 @@
     @apply rounded-3xl;
     @apply mx-auto;
   }
+
+  .container-form {
+    @apply mt-10;
+    @apply mx-auto;
+    @apply w-full;
+    @apply max-w-sm;
+  }
+
+  .loading-text {
+    @apply text-gray-200;
+    @apply text-3xl;
+    @apply font-bold;
+    @apply flex;
+    @apply justify-center;
+    @apply items-center;
+    @apply h-screen;
+  }
+
+  .submit {
+    @apply flex;
+    @apply w-full;
+    @apply justify-center;
+    @apply rounded-md;
+    /* @apply bg-indigo-600; */
+    @apply px-3;
+    @apply py-1.5;
+    @apply text-base;
+    @apply font-semibold;
+    @apply leading-6;
+    @apply text-gray-100;
+    @apply shadow-sm;
+    @apply hover:bg-indigo-500;
+    @apply focus-visible:outline;
+    @apply focus-visible:outline-2;
+    @apply focus-visible:outline-offset-2;
+    @apply focus-visible:outline-indigo-600;
+  }
 }
 
 @layer utilities {
@@ -26,6 +63,32 @@
     @apply text-2xl;
     @apply font-bold;
     @apply tracking-tight;
+    @apply text-gray-900;
+  }
+
+  .input-login {
+    @apply block;
+    @apply w-full;
+    @apply rounded-md;
+    @apply border-0;
+    @apply px-2;
+    @apply py-1.5;
+    @apply text-gray-900;
+    @apply shadow-sm;
+    @apply ring-1;
+    @apply ring-inset;
+    @apply ring-gray-300;
+    @apply placeholder:text-gray-400;
+    @apply focus:ring-2;
+    @apply focus:ring-inset;
+    @apply focus:ring-indigo-600;
+  }
+
+  .label-login {
+    @apply block;
+    @apply text-base;
+    @apply font-medium;
+    @apply leading-6;
     @apply text-gray-900;
   }
 }

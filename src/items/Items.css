@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .row {
+    @apply border-b;
+  }
+
+  .data {
+    @apply whitespace-nowrap;
+    @apply px-6;
+    @apply py-4;
+  }
+}

@@ -14,7 +14,6 @@
   .sidebar {
     @apply flex;
     @apply flex-col;
-    @apply flex-col;
     @apply sticky;
     @apply top-0;
     @apply h-screen;
@@ -72,19 +71,17 @@
   .logout {
     @apply flex;
     @apply items-center;
-    /* @apply border; */
     @apply hover:bg-gray-900;
     @apply bg-gray-800;
     @apply py-2;
     @apply rounded-lg;
-    /* @apply border-gray-700; */
     @apply px-4;
     @apply cursor-pointer;
   }
 }
 
 @layer utilities {
-  .input {
+  .input-search {
     @apply py-2;
     @apply pl-10;
     @apply pr-4;
