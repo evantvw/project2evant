@@ -22,7 +22,7 @@ const Login = ({ setToken }) => {
     try {
       const res = await axios.post("https://fakestoreapi.com/auth/login", user);
       setToken(res.data.token);
-      navigate("/home");
+      navigate("/");
       setIsPending(false);
       localStorage.setItem("token", res.data.token);
     } catch (e) {

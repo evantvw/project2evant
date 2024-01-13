@@ -6,7 +6,7 @@ const Sidebar = ({ setToken, setSearch}) => {
   const handleLogOut = () => {
     localStorage.removeItem("token");
     setToken("");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -40,7 +40,7 @@ const Sidebar = ({ setToken, setSearch}) => {
       <div className="container-sidebar">
         <nav>
           <NavLink
-            to="/home"
+            to="/"
             className={({ isActive }) =>
               isActive ? "dashboard bg-gray-800" : "dashboard"
             }
