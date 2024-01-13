@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-products {
+    @apply p-7;
+  }
+
+  .head-products {
+    @apply p-5;
+    @apply text-gray-800;
+  }
+
+  .buttons {
+    @apply flex;
+    @apply gap-4;
+  }
+
+  .button {
+    @apply py-2;
+    @apply px-3;
+    @apply border;
+    @apply rounded-lg;
+    @apply mt-8;
+    @apply bg-indigo-600;
+    @apply hover:bg-gray-800;
+    @apply text-gray-200;
+    @apply font-medium;
+    @apply flex;
+  }
+}

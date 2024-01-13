@@ -1,12 +1,12 @@
-// import List from "../list/List";
-import "./Home.css";
+import List from "../list/List";
+import "./Products.css";
 
-const Home = () => {
+const Products = ({ search }) => {
   return (
-    <div className="container-home">
-      <div className="head-home">
-        <h1 className="text-5xl font-bold ">Dashboard</h1>
-        {/* <div className="buttons">
+    <div className="container-products">
+      <div className="head-products">
+        <h1 className="text-5xl font-bold ">Products</h1>
+        <div className="buttons">
           <button className="button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,11 +61,11 @@ const Home = () => {
 
             <span>Sort Product</span>
           </button>
-        </div> */}
+        </div>
       </div>
-      {/* <List search={search} /> */}
+      <List search={search} />
     </div>
   );
 };
 
-export default Home;
+export default Products;

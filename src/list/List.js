@@ -18,25 +18,35 @@ const List = ({ search }) => {
   }, []);
 
   return (
-    <table>
+    <table className="ml-5">
       <thead className="text-gray-600">
-        <tr className="border-b-2">
-          <th scope="col" colSpan={2} className="py-2">
-            Product
-          </th>
-          <th scope="col" className="py-2">
-            Price
-          </th>
-          <th scope="col" className="py-2">
-            Category
-          </th>
-        </tr>
+        {products.filter((product) =>
+          product.title.toLowerCase().includes(search.trim().toLowerCase())
+        ).length > 0 && (
+          <tr className="border-b-2">
+            <th scope="col" colSpan={2} className="py-2">
+              Product
+            </th>
+            <th scope="col" className="py-2">
+              Price
+            </th>
+            <th scope="col" className="py-2">
+              Category
+            </th>
+            <th scope="col" className="py-2">
+              Ratings
+            </th>
+            <th scope="col" className="py-2 pl-2">
+              Sold
+            </th>
+          </tr>
+        )}
       </thead>
       <tbody className="text-gray-600">
         {products.length > 0 &&
           products
             .filter((product) =>
-              search.toLowerCase() === ""
+              search.trim().toLowerCase() === ""
                 ? product
                 : product.title.toLowerCase().includes(search.toLowerCase())
             )
