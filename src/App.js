@@ -22,9 +22,9 @@ function App() {
   const [token, setToken] = useState(initialToken);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    localStorage.setItem("token", token);
-  }, [token]);
+  // useEffect(() => {
+  //   localStorage.setItem("token", token);
+  // }, [token]);
 
   return (
     <>

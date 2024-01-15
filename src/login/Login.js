@@ -33,15 +33,13 @@ const Login = ({ setToken }) => {
       setIsPending(false);
     }
 
-    setPassword("");
-    setUsername("");
+    // setPassword("");
+    // setUsername("");
   };
 
   return (
     <>
-      {isPending ? (
-        <div className="loading-text">Loading...</div>
-      ) : (
+
         <div className="container-login">
           <img
             className="mx-auto h-10 w-auto"
@@ -91,14 +89,13 @@ const Login = ({ setToken }) => {
 
               <div>
                 <button type="submit" className="submit bg-indigo-600">
-                  Sign in
+                  {isPending? "Loading" : "Sign in"}
                 </button>
               </div>
               {isError && <div className="text-red-600 text-md">*{error}</div>}
             </form>
           </div>
         </div>
-      )}
     </>
   );
 };

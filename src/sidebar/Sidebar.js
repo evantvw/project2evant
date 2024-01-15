@@ -45,7 +45,6 @@ const Sidebar = ({ setToken, setSearch}) => {
               isActive ? "dashboard bg-gray-800" : "dashboard"
             }
           >
-            {/* <div className="dashboard"> */}
             <svg
               className="w-5 h-5"
               viewBox="0 0 24 24"
@@ -62,7 +61,6 @@ const Sidebar = ({ setToken, setSearch}) => {
             </svg>
 
             <span className="mx-4 font-medium">Dashboard</span>
-            {/* </div> */}
           </NavLink>
 
           <NavLink

@@ -40,9 +40,9 @@ const Details = () => {
         </svg>
         <span>Back</span>
       </button>
-      <div className="flex items-center mt-8 mx-auto gap-10 leading-10 border-2 p-10 rounded-xl border-indigo-600">
-        <img className="w-1/4" src={product.image} alt={product.title} />
-        <div className="description pl-3">
+      <div className="flex items-center mt-8 mx-auto gap-10 leading-10 border-2 p-10 rounded-xl bg-white">
+        <img className="w-1/6 " src={product.image} alt={product.title} />
+        <div className="description pl-3 bg-gray-200 border rounded-xl py-5 pl-5">
           <h2>
             <span className="font-medium">ID : </span>
             {product.id}
