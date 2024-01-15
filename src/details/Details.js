@@ -40,12 +40,31 @@ const Details = () => {
         </svg>
         <span>Back</span>
       </button>
-      <h2>{product.id}</h2>
-      <h2>{product.title}</h2>
-      <h2>{product.price}</h2>
-      <h2>{product.category}</h2>
-      <h2>{product.description}</h2>
-      <img className="w-1/4" src={product.image} alt={product.title} />
+      <div className="flex items-center mt-8 mx-auto gap-10 leading-10 border-2 p-10 rounded-xl border-indigo-600">
+        <img className="w-1/4" src={product.image} alt={product.title} />
+        <div className="description pl-3">
+          <h2>
+            <span className="font-medium">ID : </span>
+            {product.id}
+          </h2>
+          <h2>
+            <span className="font-medium">TITLE : </span>
+            {product.title}
+          </h2>
+          <h2>
+            <span className="font-medium">PRICE : </span>
+            {`$${product.price}`}
+          </h2>
+          <h2>
+            <span className="font-medium">CATEGORY : </span>
+            {product.category}
+          </h2>
+          <h2 className="text-balance">
+            <div className="font-medium">DESCRIPTION : </div>
+            {product.description}
+          </h2>
+        </div>
+      </div>
     </div>
   );
 };
