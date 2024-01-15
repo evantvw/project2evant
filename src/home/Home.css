@@ -5,6 +5,7 @@
 @layer components {
   .container-home {
     @apply p-7;
+    @apply w-4/6;
   }
 
   .head-home {
