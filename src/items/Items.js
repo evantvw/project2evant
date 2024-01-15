@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 const Items = ({ data }) => {
   return (
     <tr className="row">
-      <Link to={`/products/${data.id}`}>
-        <td className="data cursor-pointer">
+      <td className="data cursor-pointer">
+        <Link to={`/products/${data.id}`}>
           <img className="w-8" src={data.image} alt={data.title} />
-        </td>
-      </Link>
+        </Link>
+      </td>
+
       <td className="data">
         <h3 className="text-balance w-96">{data.title}</h3>
       </td>

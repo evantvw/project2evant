@@ -44,23 +44,23 @@ const Details = () => {
         <img className="w-1/6 " src={product.image} alt={product.title} />
         <div className="description pl-3 bg-gray-200 border rounded-xl py-5 pl-5">
           <h2>
-            <span className="font-medium">ID : </span>
+            <span className="font-bold">ID : </span>
             {product.id}
           </h2>
           <h2>
-            <span className="font-medium">TITLE : </span>
+            <span className="font-bold">TITLE : </span>
             {product.title}
           </h2>
           <h2>
-            <span className="font-medium">PRICE : </span>
+            <span className="font-bold">PRICE : </span>
             {`$${product.price}`}
           </h2>
           <h2>
-            <span className="font-medium">CATEGORY : </span>
+            <span className="font-bold">CATEGORY : </span>
             {product.category}
           </h2>
           <h2 className="text-balance">
-            <div className="font-medium">DESCRIPTION : </div>
+            <div className="font-bold">DESCRIPTION : </div>
             {product.description}
           </h2>
         </div>
