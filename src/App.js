@@ -7,6 +7,7 @@ import Details from "./details/Details";
 import Products from "./products/Products";
 import Users from "./users/Users";
 import Settings from "./settings/Settings";
+import AddProduct from "./addproduct/AddProduct";
 
 function App() {
   // const [token, setToken] = useState("");
@@ -37,6 +38,7 @@ function App() {
             <Route path="/products/:id" element={<Details />} />
             <Route path="/users" element={<Users />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/add" element={<AddProduct />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

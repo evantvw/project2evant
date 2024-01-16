@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .summary-container {
+    @apply flex;
+    @apply flex-wrap;
+    @apply gap-5;
+    @apply mt-5;
+  }
+
+  .card-container {
+    @apply border;
+    @apply rounded-xl;
+    @apply bg-gray-200;
+    @apply text-gray-800;
+    @apply p-5;
+    @apply w-1/5;
+    @apply h-1/5;
+    @apply ml-5;
+    @apply text-xl;
+    @apply text-center;
+    @apply flex;
+    @apply flex-col;
+    @apply gap-3;
+    @apply mr-auto;
+  }
+
+  .label {
+    @apply flex;
+    @apply gap-1;
+    @apply justify-center;
+  }
+}

@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./Summary.css";
 import React, { useState, useEffect } from "react";
 
 const Summary = () => {
@@ -57,13 +58,16 @@ const Summary = () => {
       total += product.rating.count * product.price;
     }
 
-    return total.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return total.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
   }
 
   return (
-    <div className="flex flex-wrap gap-5 mt-5">
-      <div className="border rounded-xl bg-gray-200 text-gray-800 p-5 w-1/5 h-1/5 ml-5 text-xl text-center flex flex-col gap-3 mr-auto">
-        <div className="flex gap-1 justify-center">
+    <div className="summary-container">
+      <div className="card-container">
+        <div className="label">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -83,8 +87,9 @@ const Summary = () => {
 
         <h2 className="font-extrabold text-5xl">{products.length}</h2>
       </div>
-      <div className="border rounded-xl bg-gray-200 text-gray-800 p-5 w-1/5 h-1/5 ml-5 text-xl text-center flex flex-col gap-3 mr-auto">
-        <div className="flex gap-1 justify-center">
+
+      <div className="card-container">
+        <div className="label">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -104,8 +109,9 @@ const Summary = () => {
         </div>
         <h2 className="font-extrabold text-5xl">{category.length}</h2>
       </div>
-      <div className="border rounded-xl bg-gray-200 text-gray-800 p-5 w-1/5 h-1/5 ml-5 text-xl text-center flex flex-col gap-3 mr-auto">
-        <div className="flex gap-1 justify-center">
+
+      <div className="card-container">
+        <div className="label">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -124,12 +130,14 @@ const Summary = () => {
         </div>
         <h2 className="font-extrabold text-5xl">{getPurchases()}</h2>
       </div>
-      <div className="border rounded-xl bg-gray-200 text-gray-800 p-5 w-1/5 h-1/5 ml-5 text-xl text-center flex flex-col gap-3 ">
+
+      <div className="card-container mr-1">
         <h2>Average Ratings</h2>
         <h2 className="font-extrabold text-5xl">{getAverageRating()}</h2>
       </div>
-      <div className="border rounded-xl bg-gray-200 text-gray-800 text-2xl p-5 w-full h-1/5 ml-5 text-xl text-center flex flex-col gap-3 ">
-        <div className="flex gap-1 justify-center items-center">
+
+      <div className="card-container w-full text-2xl">
+        <div className="label items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

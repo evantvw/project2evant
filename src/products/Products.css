@@ -18,11 +18,11 @@
   }
 
   .button {
-    @apply py-2;
+    @apply py-4;
     @apply px-3;
     @apply border;
     @apply rounded-lg;
-    @apply mt-8;
+    @apply mt-7;
     @apply bg-indigo-600;
     @apply hover:bg-gray-800;
     @apply text-gray-200;

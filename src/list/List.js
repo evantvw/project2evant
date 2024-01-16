@@ -2,20 +2,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Items from "../items/Items";
 
-const List = ({ search }) => {
+const List = ({ search, filter, sort }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     async function getProducts() {
       try {
-        const res = await axios.get("https://fakestoreapi.com/products");
+        const res = await axios.get(`https://fakestoreapi.com/products/${filter}${sort}`);
         setProducts(res.data);
       } catch (e) {
         console.log("error : ", e);
       }
     }
     getProducts();
-  }, []);
+  }, [filter, sort]);
 
   return (
     <table className="ml-5">

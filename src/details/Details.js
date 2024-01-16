@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import "./Details.css"
 
 const Details = () => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ const Details = () => {
 
   return (
     <div className="w-3/4 mx-auto">
-      <button onClick={() => navigate(-1)} className="button">
+      <button onClick={() => navigate(-1)} className="button py-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -40,9 +41,9 @@ const Details = () => {
         </svg>
         <span>Back</span>
       </button>
-      <div className="flex items-center mt-8 mx-auto gap-10 leading-10 border-2 p-10 rounded-xl bg-white">
+      <div className="container-details">
         <img className="w-1/6 " src={product.image} alt={product.title} />
-        <div className="description pl-3 bg-gray-200 border rounded-xl py-5 pl-5">
+        <div className="description">
           <h2>
             <span className="font-bold">ID : </span>
             {product.id}

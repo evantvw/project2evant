@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Login = ({ setToken }) => {
   const [password, setPassword] = useState("");
@@ -89,7 +90,7 @@ const Login = ({ setToken }) => {
 
               <div>
                 <button type="submit" className="submit bg-indigo-600">
-                  {isPending? "Loading..." : "Sign in"}
+                  {isPending? <CircularProgress size="1.5rem" color="inherit"/> : "Sign in"}
                 </button>
               </div>
               {isError && <div className="text-red-600 text-md">*{error}</div>}

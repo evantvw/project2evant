@@ -1,13 +1,30 @@
+import { useState } from "react";
 import List from "../list/List";
 import "./Products.css";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { Link } from "react-router-dom";
 
 const Products = ({ search }) => {
+  const [filter, setFilter] = useState("");
+  const [sort, setSort] = useState("?sort=asc");
+  const handleChangeFilter = (event) => {
+    setFilter(event.target.value);
+  };
+  const handleChangeSort = (event) => {
+    setSort(event.target.value)
+  };
+
   return (
     <div className="container-products">
       <div className="head-products">
         <h1 className="text-5xl font-bold ">Products</h1>
-        <div className="buttons">
-          <button className="button">
+
+        <div className="buttons items-center">
+          <Link className="button" to="/add">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -23,47 +40,45 @@ const Products = ({ search }) => {
               />
             </svg>
             <span>Add Product</span>
-          </button>
+          </Link>
 
-          <button className="button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 pr-1"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
-              />
-            </svg>
-            <span>Filter Product</span>
-          </button>
+          <Box sx={{ minWidth: 100 }} className="mt-7">
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Filter</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={filter}
+                label="Filter"
+                onChange={handleChangeFilter}
+              >
+                <MenuItem value={""}>default</MenuItem>
+                <MenuItem value={"category/men's clothing"}>men's clothing</MenuItem>
+                <MenuItem value={"category/women's clothing"}>women's clothing</MenuItem>
+                <MenuItem value={"category/jewelery"}>jewelery</MenuItem>
+                <MenuItem value={"category/electronics"}>electronics</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
 
-          <button className="button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 pr-1"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
-              />
-            </svg>
-
-            <span>Sort Product</span>
-          </button>
+          <Box sx={{ minWidth: 100 }} className="mt-7">
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={sort}
+                label="Sort"
+                onChange={handleChangeSort}
+              >
+                <MenuItem value={"?sort=asc"}>Ascending</MenuItem>
+                <MenuItem value={"?sort=desc"}>Descending</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
         </div>
       </div>
-      <List search={search} />
+      <List search={search} filter={filter} sort={sort} />
     </div>
   );
 };
