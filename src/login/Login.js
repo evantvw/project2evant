@@ -89,7 +89,7 @@ const Login = ({ setToken }) => {
 
               <div>
                 <button type="submit" className="submit bg-indigo-600">
-                  {isPending? "Loading" : "Sign in"}
+                  {isPending? "Loading..." : "Sign in"}
                 </button>
               </div>
               {isError && <div className="text-red-600 text-md">*{error}</div>}

@@ -57,7 +57,7 @@ const Summary = () => {
       total += product.rating.count * product.price;
     }
 
-    return total;
+    return total.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
   }
 
   return (
@@ -147,7 +147,7 @@ const Summary = () => {
 
           <h2>Revenues</h2>
         </div>
-        <h2 className="font-extrabold text-5xl">${getRevenue()}</h2>
+        <h2 className="font-extrabold text-5xl">{getRevenue()}</h2>
       </div>
     </div>
   );

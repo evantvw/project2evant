@@ -32,7 +32,7 @@ function App() {
         <div className="flex bg-gray-100">
           <Sidebar setToken={setToken} setSearch={setSearch} />
           <Routes>
-            <Route path="/" element={<Home search={search} />} />
+            <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products search={search} />} />
             <Route path="/products/:id" element={<Details />} />
             <Route path="/users" element={<Users />} />
