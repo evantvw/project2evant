@@ -8,7 +8,9 @@ const List = ({ search, filter, sort }) => {
   useEffect(() => {
     async function getProducts() {
       try {
-        const res = await axios.get(`https://fakestoreapi.com/products/${filter}${sort}`);
+        const res = await axios.get(
+          `https://fakestoreapi.com/products/${filter}${sort}`
+        );
         setProducts(res.data);
       } catch (e) {
         console.log("error : ", e);

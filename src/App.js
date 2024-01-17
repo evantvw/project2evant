@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Home from "./home/Home";
 import Login from "./login/Login";
 import Sidebar from "./sidebar/Sidebar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -8,24 +7,12 @@ import Products from "./products/Products";
 import Users from "./users/Users";
 import Settings from "./settings/Settings";
 import AddProduct from "./addproduct/AddProduct";
+import Home from "./home/Home";
 
 function App() {
-  // const [token, setToken] = useState("");
-  // const [search, setSearch] = useState("");
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     setToken(token);
-  //   }
-  // }, []);
   const initialToken = localStorage.getItem("token") || "";
   const [token, setToken] = useState(initialToken);
   const [search, setSearch] = useState("");
-
-  // useEffect(() => {
-  //   localStorage.setItem("token", token);
-  // }, [token]);
 
   return (
     <BrowserRouter>
@@ -36,7 +23,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products search={search} />} />
             <Route path="/products/:id" element={<Details />} />
-            <Route path="/users" element={<Users />} />
+            <Route path="/users" element={<Users search={search} />} />
+            {/* <Route path="/users/:id" element={<Details />} /> */}
             <Route path="/settings" element={<Settings />} />
             <Route path="/add" element={<AddProduct />} />
             <Route path="*" element={<Navigate to="/" />} />

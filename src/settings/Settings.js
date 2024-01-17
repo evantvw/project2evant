@@ -1,5 +1,9 @@
 const Settings = () => {
-    return ( <div>ini settings</div> );
-}
- 
+  return (
+    <div className="m-auto text-3xl font-extrabold">
+      PAGE UNDER DEVELOPMENT 😘
+    </div>
+  );
+};
+
 export default Settings;

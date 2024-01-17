@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "./Details.css"
+import "./Details.css";
 
 const Details = () => {
   const { id } = useParams();

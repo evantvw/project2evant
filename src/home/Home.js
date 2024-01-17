@@ -1,12 +1,8 @@
 import Piechart from "../piechart/Piechart";
 import Summary from "../summary/Summary";
-// import { Chart } from "react-google-charts";
 import "./Home.css";
-// import axios from "axios";
 
 const Home = () => {
-
-  
   return (
     <div className="container-home">
       <div className="head-home">

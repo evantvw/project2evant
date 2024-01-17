@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import axios from "axios";
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -115,7 +115,11 @@ const AddProduct = () => {
         </div>
 
         <button className="py-2 px-5 bg-indigo-600 text-gray-100 w-1/6 rounded-lg ml-auto">
-          {pending? <CircularProgress size="1rem" color="inherit"/> : "Add product"}
+          {pending ? (
+            <CircularProgress size="1rem" color="inherit" />
+          ) : (
+            "Add product"
+          )}
         </button>
       </Box>
     </div>

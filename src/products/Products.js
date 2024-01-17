@@ -15,7 +15,7 @@ const Products = ({ search }) => {
     setFilter(event.target.value);
   };
   const handleChangeSort = (event) => {
-    setSort(event.target.value)
+    setSort(event.target.value);
   };
 
   return (
@@ -24,7 +24,7 @@ const Products = ({ search }) => {
         <h1 className="text-5xl font-bold ">Products</h1>
 
         <div className="buttons items-center">
-          <Link className="button" to="/add">
+          <Link className="button-add" to="/add">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -42,19 +42,23 @@ const Products = ({ search }) => {
             <span>Add Product</span>
           </Link>
 
-          <Box sx={{ minWidth: 100 }} className="mt-7">
+          <Box sx={{ minWidth: 100 }} className="mt-7 ">
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Filter</InputLabel>
+              <InputLabel id="filter">Filter</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
+                labelId="filter"
                 id="demo-simple-select"
                 value={filter}
                 label="Filter"
                 onChange={handleChangeFilter}
               >
                 <MenuItem value={""}>default</MenuItem>
-                <MenuItem value={"category/men's clothing"}>men's clothing</MenuItem>
-                <MenuItem value={"category/women's clothing"}>women's clothing</MenuItem>
+                <MenuItem value={"category/men's clothing"}>
+                  men's clothing
+                </MenuItem>
+                <MenuItem value={"category/women's clothing"}>
+                  women's clothing
+                </MenuItem>
                 <MenuItem value={"category/jewelery"}>jewelery</MenuItem>
                 <MenuItem value={"category/electronics"}>electronics</MenuItem>
               </Select>
