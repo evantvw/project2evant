@@ -1,8 +1,10 @@
 // import { Link } from "react-router-dom";
+import "./UserItem.css";
+
 const UserItem = ({ data }) => {
   return (
     <>
-      <tr className="row lg:hidden">
+      <tr className="row">
         <td className="data">
           {/* <Link to={`/users/${data.id}`}> */}
           <h3>{data.id}</h3>
@@ -22,8 +24,9 @@ const UserItem = ({ data }) => {
         </td>
       </tr>
 
-      <div className="hidden lg:block mb-5 bg-gray-200 p-5 rounded-lg font-medium">
-        <div className="flex gap-3 items-center">
+      {/* mobile view */}
+      <div className="container-useritems-mobile">
+        <div className="description-useritems-mobile">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"

@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer base {
-  body {
-    @apply bg-indigo-600;
-  }
-} */
 
 @layer components {
   .container-login {
@@ -20,14 +15,14 @@
     @apply md:py-8;
   }
 
-  .container-form {
+  .container-form-login {
     @apply mt-8;
     @apply mx-auto;
     @apply w-full;
     @apply max-w-sm;
   }
 
-  .submit-btn {
+  .btn-submit-login {
     @apply flex;
     @apply w-full;
     @apply justify-center;
@@ -49,14 +44,14 @@
 }
 
 @layer utilities {
-  .login-logo {
+  .logo-login {
     @apply font-extrabold;
     @apply text-indigo-600;
     @apply text-3xl;
     @apply text-center;
   }
 
-  .h2 {
+  .h2-login {
     @apply mt-5;
     @apply text-center;
     @apply text-2xl;
@@ -89,5 +84,9 @@
     @apply font-medium;
     @apply leading-6;
     @apply text-gray-900;
+  }
+  .error-msg-login {
+    @apply text-red-600;
+    @apply text-base;
   }
 }

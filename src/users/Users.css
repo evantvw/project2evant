@@ -5,28 +5,12 @@
 @layer components {
   .container-users {
     @apply p-7;
+    @apply w-4/6;
+    @apply sm:w-full;
   }
 
   .head-users {
     @apply p-5;
     @apply text-gray-800;
   }
-
-  .buttons {
-    @apply flex;
-    @apply gap-4;
-  }
-
-  /* .button {
-    @apply py-4;
-    @apply px-3;
-    @apply border;
-    @apply rounded-lg;
-    @apply mt-7;
-    @apply bg-indigo-600;
-    @apply hover:bg-gray-800;
-    @apply text-gray-200;
-    @apply font-medium;
-    @apply flex;
-  } */
 }

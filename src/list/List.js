@@ -45,6 +45,7 @@ const List = ({ search, filter, sort }) => {
             </tr>
           )}
         </thead>
+
         <tbody className="text-gray-600">
           {products.length > 0 &&
             products
@@ -57,6 +58,7 @@ const List = ({ search, filter, sort }) => {
         </tbody>
       </table>
 
+      {/* mobile view */}
       <div className="hidden lg:block ml-5">
         {products.length > 0 &&
           products

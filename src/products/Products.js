@@ -19,7 +19,7 @@ const Products = ({ search, setOpen, open }) => {
   };
 
   return (
-    <div className="container-products lg:w-4/6 sm:w-full sm:p-0 ">
+    <div className="container-products">
       <div className="head-products">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -36,10 +36,10 @@ const Products = ({ search, setOpen, open }) => {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
-        <h1 className="text-5xl font-bold md:text-center">Products</h1>
+        <h1 className="title">Products</h1>
 
-        <div className={`buttons items-center ${open? "hidden":""}`}>
-          <Link className="button-add lg:w-auto md:py-2" to="/add">
+        <div className={`buttons ${open ? "hidden" : ""}`}>
+          <Link className="btn-add-products" to="/add">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -54,7 +54,7 @@ const Products = ({ search, setOpen, open }) => {
                 d="M12 4.5v15m7.5-7.5h-15"
               />
             </svg>
-            <span className="md:text-sm">Add Product</span>
+            <span>Add Product</span>
           </Link>
 
           <Box sx={{ minWidth: 100 }} className="mt-7">
@@ -62,7 +62,7 @@ const Products = ({ search, setOpen, open }) => {
               <InputLabel id="filter">Filter</InputLabel>
               <Select
                 labelId="filter"
-                id="demo-simple-select"
+                id="filter-select"
                 value={filter}
                 label="Filter"
                 onChange={handleChangeFilter}
@@ -82,10 +82,10 @@ const Products = ({ search, setOpen, open }) => {
 
           <Box sx={{ minWidth: 100 }} className="mt-7">
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+              <InputLabel id="sort">Sort</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                labelId="sort"
+                id="sort-select"
                 value={sort}
                 label="Sort"
                 onChange={handleChangeSort}
@@ -97,7 +97,8 @@ const Products = ({ search, setOpen, open }) => {
           </Box>
         </div>
       </div>
-      <div className="lg:w-full">
+
+      <div className="lg:w-full overflow-x-auto">
         <List search={search} filter={filter} sort={sort} />
       </div>
     </div>

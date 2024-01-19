@@ -55,6 +55,7 @@ const UsersList = ({ search, sort }) => {
         </tbody>
       </table>
 
+      {/* mobile view */}
       <div className="hidden lg:block md:ml-5">
         {users.length > 0 &&
           users

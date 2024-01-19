@@ -4,7 +4,7 @@ import "./Home.css";
 
 const Home = ({ setOpen }) => {
   return (
-    <div className="container-home sm:w-full">
+    <div className="container-home">
       <div className="head-home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -22,10 +22,10 @@ const Home = ({ setOpen }) => {
           />
         </svg>
 
-        <h1 className="text-5xl font-bold sm:mt-5 sm:text-center">Dashboard</h1>
+        <h1 className="title">Dashboard</h1>
       </div>
       <Summary />
-      <div className="mt-5 ml-5 lg:w-[77%] md:w-[84%] sm:hidden">
+      <div className="container-piechart">
         <Piechart />
       </div>
     </div>

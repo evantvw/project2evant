@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* mobile view */
+  .container-useritems-mobile {
+    @apply hidden;
+    @apply mb-5;
+    @apply bg-gray-200;
+    @apply p-5;
+    @apply rounded-lg;
+    @apply font-medium;
+    @apply lg:block;
+  }
+
+  .description-useritems-mobile {
+    @apply flex;
+    @apply gap-3;
+    @apply items-center;
+  }
+}

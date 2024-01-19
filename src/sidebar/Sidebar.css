@@ -4,15 +4,6 @@
 
 @layer components {
   .container-sidebar {
-    @apply mt-6;
-    @apply flex;
-    @apply flex-col;
-    @apply justify-between;
-    @apply flex-1;
-    @apply lg:w-full;
-  }
-
-  .sidebar {
     @apply flex;
     @apply flex-col;
     @apply sticky;
@@ -25,10 +16,6 @@
     @apply lg:w-56;
     @apply md:w-48;
     @apply sm:w-full;
-    /* @apply sm:hidden */
-    /* @apply sm:fixed;
-    @apply sm:translate-x-[-100%]; */
-    /* @apply md:min-h-screen; */
   }
 
   .searchbar {
@@ -36,21 +23,16 @@
     @apply mt-6;
   }
 
-  .dashboard {
+  .content-sidebar {
+    @apply mt-6;
     @apply flex;
-    @apply items-center;
-    @apply px-4;
-    @apply py-2;
-    @apply text-gray-200;
-    @apply rounded-lg;
-    @apply transition-colors;
-    @apply duration-300;
-    @apply transform;
-    @apply hover:bg-gray-800;
-    @apply cursor-pointer;
+    @apply flex-col;
+    @apply justify-between;
+    @apply flex-1;
     @apply lg:w-full;
   }
 
+  .dashboard,
   .users,
   .products,
   .settings {
@@ -60,13 +42,24 @@
     @apply py-2;
     @apply text-gray-200;
     @apply rounded-lg;
-    @apply mt-5;
+    @apply mt-3;
     @apply transition-colors;
     @apply duration-300;
     @apply transform;
     @apply hover:bg-gray-800;
     @apply cursor-pointer;
     @apply lg:w-full;
+  }
+
+  .tabs-sidebar {
+    @apply mx-4;
+    @apply font-medium;
+  }
+
+  .tabs-logout {
+    @apply mx-2;
+    @apply font-medium;
+    @apply text-gray-100;
   }
 
   .logout {
@@ -78,6 +71,20 @@
     @apply rounded-lg;
     @apply px-4;
     @apply cursor-pointer;
+  }
+
+  /* mobile view */
+  .head-sidebar-mobile {
+    @apply hidden;
+    @apply sm:flex;
+    @apply sm:justify-between;
+    @apply items-center;
+  }
+
+  .logo-sidebar-mobile {
+    @apply font-extrabold;
+    @apply text-3xl;
+    @apply text-gray-100;
   }
 }
 

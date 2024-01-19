@@ -10,9 +10,9 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
   };
 
   return (
-    <aside className={`sidebar lg: ${open?'sm:fixed':'sm:hidden'}`}>
-      <div className="hidden sm:flex sm:justify-between items-center">
-        <h1 className="font-extrabold text-3xl text-gray-100">AdHub</h1>
+    <aside className={`container-sidebar ${open ? "sm:fixed" : "sm:hidden"}`}>
+      <div className="head-sidebar-mobile">
+        <h1 className="logo-sidebar-mobile">AdHub</h1>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -20,7 +20,7 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
           strokeWidth={1.5}
           stroke="currentColor"
           className="w-6 h-6 hidden sm:block sm:text-gray-100"
-          onClick={()=>setOpen(false)}
+          onClick={() => setOpen(false)}
         >
           <path
             strokeLinecap="round"
@@ -56,14 +56,14 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
         />
       </div>
 
-      <div className="container-sidebar">
+      <div className="content-sidebar">
         <nav>
           <NavLink
             to="/"
             className={({ isActive }) =>
               isActive ? "dashboard bg-gray-800" : "dashboard"
             }
-            onClick={()=>setOpen(false)}
+            onClick={() => setOpen(false)}
           >
             <svg
               className="w-5 h-5"
@@ -80,7 +80,7 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
               />
             </svg>
 
-            <span className="mx-4 font-medium">Dashboard</span>
+            <span className="tabs-sidebar">Dashboard</span>
           </NavLink>
 
           <NavLink
@@ -88,7 +88,7 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
             className={({ isActive }) =>
               isActive ? "users bg-gray-800" : "users"
             }
-            onClick={()=>setOpen(false)}
+            onClick={() => setOpen(false)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
               />
             </svg>
 
-            <span className="mx-4 font-medium">Users</span>
+            <span className="tabs-sidebar">Users</span>
           </NavLink>
 
           <NavLink
@@ -113,7 +113,7 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
             className={({ isActive }) =>
               isActive ? "products bg-gray-800" : "products"
             }
-            onClick={()=>setOpen(false)}
+            onClick={() => setOpen(false)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +130,7 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
               />
             </svg>
 
-            <span className="mx-4 font-medium">Products</span>
+            <span className="tabs-sidebar">Products</span>
           </NavLink>
 
           <NavLink
@@ -138,7 +138,7 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
             className={({ isActive }) =>
               isActive ? "settings bg-gray-800" : "settings"
             }
-            onClick={()=>setOpen(false)}
+            onClick={() => setOpen(false)}
           >
             <svg
               className="w-5 h-5"
@@ -162,7 +162,7 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
               />
             </svg>
 
-            <span className="mx-4 font-medium">Settings</span>
+            <span className="tabs-sidebar">Settings</span>
           </NavLink>
         </nav>
 
@@ -182,7 +182,7 @@ const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
             />
           </svg>
 
-          <span className="mx-2 font-medium text-gray-100">Log Out</span>
+          <span className="tabs-logout">Log Out</span>
         </div>
       </div>
     </aside>

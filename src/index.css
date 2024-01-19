@@ -29,4 +29,24 @@
     @apply font-medium;
     @apply flex;
   }
+
+  .buttons {
+    @apply flex;
+    @apply gap-4;
+    @apply items-center;
+  }
 }
+
+@layer utilities {
+  .row {
+    @apply border-b;
+    @apply lg:hidden;
+  }
+
+  .data {
+    @apply whitespace-nowrap;
+    @apply px-6;
+    @apply py-4;
+  }
+}
+

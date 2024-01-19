@@ -4,15 +4,19 @@ import { Link } from "react-router-dom";
 const Items = ({ data }) => {
   return (
     <>
-      <tr className="row lg:hidden">
+      <tr className="row">
         <td className="data cursor-pointer">
           <Link to={`/products/${data.id}`}>
-            <img className="w-8 lg:hidden" src={data.image} alt={data.title} />
+            <img
+              className="min-w-8 max-w-8 lg:hidden"
+              src={data.image}
+              alt={data.title}
+            />
           </Link>
         </td>
 
         <td className="data">
-          <h3 className="text-balance w-96 lg:w-60">{data.title}</h3>
+          <h3 className="text-balance w-96">{data.title}</h3>
         </td>
         <td className="data">
           <h3>{`$${data.price}`}</h3>
@@ -44,11 +48,16 @@ const Items = ({ data }) => {
         </td>
       </tr>
 
-      <div className="hidden lg:block bg-white mb-3 p-3 rounded-xl sm:mr-5">
+      {/* mobile view */}
+      <div className="container-items-mobile">
         <Link to={`/products/${data.id}`}>
-          <img className="pb-5 w-48 mx-auto" src={data.image} alt={data.title} />
+          <img
+            className="pb-5 w-48 mx-auto"
+            src={data.image}
+            alt={data.title}
+          />
         </Link>
-        <div className="text-gray-800 rounded-xl p-4 font-bold text-sm">
+        <div className="description-items-mobile">
           <h2 className="truncate">{data.title}</h2>
           <h2>${data.price}</h2>
           <h2>{data.category}</h2>

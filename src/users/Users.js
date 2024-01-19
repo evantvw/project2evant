@@ -13,7 +13,7 @@ const Users = ({ search, setOpen, open }) => {
     setSort(event.target.value);
   };
   return (
-    <div className="container-users sm:w-full ">
+    <div className="container-users">
       <div className="head-users">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,15 +30,15 @@ const Users = ({ search, setOpen, open }) => {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
-        <h1 className="text-5xl font-bold sm:text-center">Users</h1>
+        <h1 className="title">Users</h1>
 
-        <div className={`buttons items-center ${open? "hidden" : ""}`}>
+        <div className={`buttons items-center ${open ? "hidden" : ""}`}>
           <Box sx={{ minWidth: 100 }} className="mt-7">
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+              <InputLabel id="sort">Sort</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                labelId="sort"
+                id="sort-select"
                 value={sort}
                 label="Sort"
                 onChange={handleChangeSort}
@@ -50,7 +50,10 @@ const Users = ({ search, setOpen, open }) => {
           </Box>
         </div>
       </div>
-      <UsersList search={search} sort={sort} />
+
+      <div className="lg:w-full overflow-x-auto">
+        <UsersList search={search} sort={sort} />
+      </div>
     </div>
   );
 };

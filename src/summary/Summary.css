@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 @layer components {
-  .summary-container {
+  .container-summary {
     @apply flex;
     @apply flex-wrap;
     @apply gap-5;
     @apply mt-5;
+    @apply sm:flex-col;
   }
 
-  .card-container {
+  .container-card-summary {
     @apply border;
     @apply rounded-xl;
     @apply bg-gray-200;
@@ -26,11 +27,39 @@
     @apply gap-3;
     @apply mr-auto;
     @apply lg:mr-3;
+    @apply sm:w-full;
+    @apply sm:mx-auto;
   }
 
-  .label {
+  .container-card-revenue {
+    @apply text-2xl;
+    @apply lg:text-xl;
+    @apply lg:w-1/2;
+    @apply lg:pb-12;
+    @apply md:text-base;
+    @apply md:w-[55%];
+    @apply md:pb-8;
+  }
+
+  .label-summary {
     @apply flex;
     @apply gap-1;
     @apply justify-center;
+    @apply items-center;
+  }
+}
+
+@layer utilities {
+  .value-h2-summary {
+    @apply font-extrabold;
+    @apply text-5xl;
+    @apply lg:text-3xl;
+    @apply md:text-2xl;
+    @apply lg:truncate;
+  }
+
+  .label-h2-summary {
+    @apply md:text-sm;
+    @apply sm:text-xl;
   }
 }

@@ -37,10 +37,10 @@ const Login = ({ setToken }) => {
 
   return (
     <div className="container-login">
-      <h1 className="login-logo">AdHub</h1>
-      <h2 className="h2">Sign in to your account</h2>
+      <h1 className="logo-login">AdHub</h1>
+      <h2 className="h2-login">Sign in to your account</h2>
 
-      <div className="container-form">
+      <div className="container-form-login">
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="username" className="label-login">
@@ -60,11 +60,9 @@ const Login = ({ setToken }) => {
           </div>
 
           <div>
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="label-login">
-                Password
-              </label>
-            </div>
+            <label htmlFor="password" className="label-login">
+              Password
+            </label>
             <div className="mt-2">
               <input
                 id="password"
@@ -80,15 +78,15 @@ const Login = ({ setToken }) => {
           </div>
 
           <div>
-            <button type="submit" className="submit-btn bg-indigo-600">
+            <button type="submit" className="btn-submit-login bg-indigo-600">
               {isPending ? (
                 <CircularProgress size="1.5rem" color="inherit" />
               ) : (
-                "Sign in"
+                "Sign In"
               )}
             </button>
           </div>
-          {isError && <div className="text-red-600 text-md">*{error}</div>}
+          {isError && <div className="error-msg-login">*{error}</div>}
         </form>
       </div>
     </div>

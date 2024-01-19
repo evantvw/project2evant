@@ -5,6 +5,9 @@
 @layer components {
   .container-products {
     @apply p-7;
+    @apply xl:w-4/6;
+    @apply sm:w-full;
+    @apply sm:p-0;
   }
 
   .head-products {
@@ -12,12 +15,7 @@
     @apply text-gray-800;
   }
 
-  .buttons {
-    @apply flex;
-    @apply gap-4;
-  }
-
-  .button-add{
+  .btn-add-products {
     @apply py-4;
     @apply px-3;
     @apply border;
@@ -28,5 +26,9 @@
     @apply text-gray-200;
     @apply font-medium;
     @apply flex;
+    @apply lg:w-auto;
+    @apply md:py-5;
+    @apply sm:py-3;
+    @apply md:text-sm;
   }
 }

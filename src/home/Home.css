@@ -6,7 +6,7 @@
   .container-home {
     @apply p-7;
     @apply w-4/6;
-    
+    @apply sm:w-full;
   }
 
   .head-home {
@@ -14,9 +14,11 @@
     @apply text-gray-800;
   }
 
-  .buttons {
-    @apply flex;
-    @apply gap-4;
+  .container-piechart {
+    @apply mt-5;
+    @apply ml-5;
+    @apply lg:w-full;
+    @apply md:w-[84%];
+    @apply sm:hidden;
   }
-
 }
