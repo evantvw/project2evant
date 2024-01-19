@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-add {
+    @apply w-3/4;
+    @apply mx-auto;
+    @apply xl:w-[70%];
+    @apply lg:w-1/2;
+    @apply sm:min-h-screen;
+    @apply sm:w-3/4;
+  }
+
+  .btn-add-submit {
+    @apply py-2;
+    @apply px-5;
+    @apply bg-indigo-600;
+    @apply text-gray-100;
+    @apply font-medium;
+    @apply w-1/6;
+    @apply rounded-lg;
+    @apply ml-auto;
+    @apply lg:w-1/2;
+  }
+}

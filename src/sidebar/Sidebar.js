@@ -1,7 +1,7 @@
 import "./Sidebar.css";
 import { useNavigate, NavLink } from "react-router-dom";
 
-const Sidebar = ({ setToken, setSearch}) => {
+const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
   const navigate = useNavigate();
   const handleLogOut = () => {
     localStorage.removeItem("token");
@@ -10,10 +10,24 @@ const Sidebar = ({ setToken, setSearch}) => {
   };
 
   return (
-    <aside className="sidebar">
-      <div className="logo">
-        <img src="\logo\technopedia.png" alt="" />
-        <h2 className="py-1">technopedia</h2>
+    <aside className={`sidebar lg: ${open?'sm:fixed':'sm:hidden'}`}>
+      <div className="hidden sm:flex sm:justify-between items-center">
+        <h1 className="font-extrabold text-3xl text-gray-100">AdHub</h1>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6 hidden sm:block sm:text-gray-100"
+          onClick={()=>setOpen(false)}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
       </div>
 
       <div className="searchbar">
@@ -34,7 +48,12 @@ const Sidebar = ({ setToken, setSearch}) => {
           </svg>
         </span>
 
-        <input type="text" className="input-search" placeholder="Search" onChange={(e)=> setSearch(e.target.value)}/>
+        <input
+          type="text"
+          className="input-search"
+          placeholder="Search"
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
 
       <div className="container-sidebar">
@@ -44,6 +63,7 @@ const Sidebar = ({ setToken, setSearch}) => {
             className={({ isActive }) =>
               isActive ? "dashboard bg-gray-800" : "dashboard"
             }
+            onClick={()=>setOpen(false)}
           >
             <svg
               className="w-5 h-5"
@@ -68,6 +88,7 @@ const Sidebar = ({ setToken, setSearch}) => {
             className={({ isActive }) =>
               isActive ? "users bg-gray-800" : "users"
             }
+            onClick={()=>setOpen(false)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -92,6 +113,7 @@ const Sidebar = ({ setToken, setSearch}) => {
             className={({ isActive }) =>
               isActive ? "products bg-gray-800" : "products"
             }
+            onClick={()=>setOpen(false)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,6 +138,7 @@ const Sidebar = ({ setToken, setSearch}) => {
             className={({ isActive }) =>
               isActive ? "settings bg-gray-800" : "settings"
             }
+            onClick={()=>setOpen(false)}
           >
             <svg
               className="w-5 h-5"

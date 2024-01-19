@@ -9,3 +9,24 @@
     @apply box-border;
   }
 }
+
+@layer components {
+  .title {
+    @apply text-5xl;
+    @apply font-bold;
+    @apply mt-5;
+    @apply sm:text-center;
+  }
+
+  .btn-back {
+    @apply py-2;
+    @apply px-3;
+    @apply rounded-lg;
+    @apply mt-8;
+    @apply bg-indigo-600;
+    @apply hover:bg-gray-800;
+    @apply text-gray-100;
+    @apply font-medium;
+    @apply flex;
+  }
+}

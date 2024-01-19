@@ -13,17 +13,31 @@ function App() {
   const initialToken = localStorage.getItem("token") || "";
   const [token, setToken] = useState(initialToken);
   const [search, setSearch] = useState("");
+  const [open, setOpen] = useState(false);
 
   return (
     <BrowserRouter>
       {token ? (
         <div className="flex bg-gray-100">
-          <Sidebar setToken={setToken} setSearch={setSearch} />
+          <Sidebar
+            setToken={setToken}
+            setSearch={setSearch}
+            open={open}
+            setOpen={setOpen}
+          />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products search={search} />} />
+            <Route path="/" element={<Home setOpen={setOpen} />} />
+            <Route
+              path="/products"
+              element={
+                <Products search={search} setOpen={setOpen} open={open} />
+              }
+            />
             <Route path="/products/:id" element={<Details />} />
-            <Route path="/users" element={<Users search={search} />} />
+            <Route
+              path="/users"
+              element={<Users search={search} setOpen={setOpen} open={open} />}
+            />
             {/* <Route path="/users/:id" element={<Details />} /> */}
             <Route path="/settings" element={<Settings />} />
             <Route path="/add" element={<AddProduct />} />

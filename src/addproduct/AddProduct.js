@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+import "./AddProduct.css";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import CircularProgress from "@mui/material/CircularProgress";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -40,8 +41,8 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="w-3/4 mx-auto">
-      <button onClick={() => navigate(-1)} className="button py-2">
+    <div className="container-add">
+      <button onClick={() => navigate(-1)} className="btn-back py-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -59,7 +60,7 @@ const AddProduct = () => {
         <span>Back</span>
       </button>
 
-      <h1 className="text-5xl font-bold mt-5">Add New Products</h1>
+      <h1 className="title">Add New Products</h1>
 
       <Box
         component="form"
@@ -77,6 +78,7 @@ const AddProduct = () => {
             fullWidth
             label="title"
             id="title"
+            placeholder="Enter product's title here"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -84,6 +86,7 @@ const AddProduct = () => {
             fullWidth
             label="price"
             id="price"
+            placeholder="Enter product's price here"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
@@ -100,8 +103,9 @@ const AddProduct = () => {
         <div className="flex gap-3">
           <TextField
             fullWidth
-            label="image"
+            label="image link"
             id="image"
+            placeholder="paste your product's image link here"
             value={image}
             onChange={(e) => setImage(e.target.value)}
           />
@@ -109,12 +113,13 @@ const AddProduct = () => {
             fullWidth
             label="category"
             id="category"
+            placeholder="Enter product's category here"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           />
         </div>
 
-        <button className="py-2 px-5 bg-indigo-600 text-gray-100 w-1/6 rounded-lg ml-auto">
+        <button className="btn-add-submit">
           {pending ? (
             <CircularProgress size="1rem" color="inherit" />
           ) : (

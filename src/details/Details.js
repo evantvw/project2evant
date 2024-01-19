@@ -23,8 +23,8 @@ const Details = () => {
   console.log(product);
 
   return (
-    <div className="w-3/4 mx-auto">
-      <button onClick={() => navigate(-1)} className="button py-2">
+    <div className="w-3/4 mx-auto md:w-1/2 sm:w-5/6 sm:min-h-screen">
+      <button onClick={() => navigate(-1)} className="btn-back py-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -41,27 +41,34 @@ const Details = () => {
         </svg>
         <span>Back</span>
       </button>
-      <div className="container-details">
-        <img className="w-1/6 " src={product.image} alt={product.title} />
+      <div className="container-details w-5/6 h-4/6 leading-7 md:w-full sm:hidden">
+        <img className="w-[25%]" src={product.image} alt={product.title} />
         <div className="description">
-          <h2>
-            <span className="font-bold">ID : </span>
-            {product.id}
-          </h2>
-          <h2>
-            <span className="font-bold">TITLE : </span>
+          <h2 className="font-bold text-3xl mb-28 lg:mb-12 md:text-lg md:mb-3">
             {product.title}
           </h2>
-          <h2>
-            <span className="font-bold">PRICE : </span>
-            {`$${product.price}`}
-          </h2>
-          <h2>
-            <span className="font-bold">CATEGORY : </span>
+          <h2 className="text-xl mb-2">{`$${product.price}`}</h2>
+          <h2 className="font-extrabold text-indigo-600 sm:text-sm">
             {product.category}
           </h2>
-          <h2 className="text-balance">
-            <div className="font-bold">DESCRIPTION : </div>
+          <h2 className="text-balance md:text-sm">
+            <span className="font-bold">Description : </span>
+            {product.description}
+          </h2>
+        </div>
+      </div>
+      <div className="hidden sm:block bg-white p-3 rounded-xl mt-8">
+        <img className="w-[30%] mx-auto" src={product.image} alt={product.title} />
+        <div className="description">
+          <h2 className="font-bold text-3xl mb-28 lg:mb-12 md:text-lg md:mb-3">
+            {product.title}
+          </h2>
+          <h2 className="text-xl mb-2">{`$${product.price}`}</h2>
+          <h2 className="font-extrabold text-indigo-600 sm:text-sm">
+            {product.category}
+          </h2>
+          <h2 className="text-balance md:text-sm">
+            <span className="font-bold">Description : </span>
             {product.description}
           </h2>
         </div>

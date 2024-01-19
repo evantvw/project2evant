@@ -20,31 +20,44 @@ const List = ({ search, filter, sort }) => {
   }, [filter, sort]);
 
   return (
-    <table className="ml-5">
-      <thead className="text-gray-600">
-        {products.filter((product) =>
-          product.title.toLowerCase().includes(search.trim().toLowerCase())
-        ).length > 0 && (
-          <tr className="border-b-2">
-            <th scope="col" colSpan={2} className="py-2">
-              Product
-            </th>
-            <th scope="col" className="py-2">
-              Price
-            </th>
-            <th scope="col" className="py-2">
-              Category
-            </th>
-            <th scope="col" className="py-2">
-              Ratings
-            </th>
-            <th scope="col" className="py-2 pl-2">
-              Sold
-            </th>
-          </tr>
-        )}
-      </thead>
-      <tbody className="text-gray-600">
+    <>
+      <table className="ml-5 lg:hidden">
+        <thead className="text-gray-600">
+          {products.filter((product) =>
+            product.title.toLowerCase().includes(search.trim().toLowerCase())
+          ).length > 0 && (
+            <tr className="border-b-2">
+              <th scope="col" colSpan={2} className="py-2">
+                Product
+              </th>
+              <th scope="col" className="py-2">
+                Price
+              </th>
+              <th scope="col" className="py-2">
+                Category
+              </th>
+              <th scope="col" className="py-2">
+                Ratings
+              </th>
+              <th scope="col" className="py-2 pl-2">
+                Sold
+              </th>
+            </tr>
+          )}
+        </thead>
+        <tbody className="text-gray-600">
+          {products.length > 0 &&
+            products
+              .filter((product) =>
+                search.trim().toLowerCase() === ""
+                  ? product
+                  : product.title.toLowerCase().includes(search.toLowerCase())
+              )
+              .map((product) => <Items key={product.id} data={product} />)}
+        </tbody>
+      </table>
+
+      <div className="hidden lg:block ml-5">
         {products.length > 0 &&
           products
             .filter((product) =>
@@ -53,8 +66,8 @@ const List = ({ search, filter, sort }) => {
                 : product.title.toLowerCase().includes(search.toLowerCase())
             )
             .map((product) => <Items key={product.id} data={product} />)}
-      </tbody>
-    </table>
+      </div>
+    </>
   );
 };
 

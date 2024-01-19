@@ -25,6 +25,7 @@
     @apply flex-col;
     @apply gap-3;
     @apply mr-auto;
+    @apply lg:mr-3;
   }
 
   .label {

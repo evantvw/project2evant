@@ -7,17 +7,32 @@ import Select from "@mui/material/Select";
 import { useState } from "react";
 import UsersList from "../userslist/UsersList";
 
-const Users = ({ search }) => {
+const Users = ({ search, setOpen, open }) => {
   const [sort, setSort] = useState("?sort=asc");
   const handleChangeSort = (event) => {
     setSort(event.target.value);
   };
   return (
-    <div className="container-users">
+    <div className="container-users sm:w-full ">
       <div className="head-users">
-        <h1 className="text-5xl font-bold ">Users</h1>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6 hidden sm:block"
+          onClick={() => setOpen(true)}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        <h1 className="text-5xl font-bold sm:text-center">Users</h1>
 
-        <div className="buttons items-center">
+        <div className={`buttons items-center ${open? "hidden" : ""}`}>
           <Box sx={{ minWidth: 100 }} className="mt-7">
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">Sort</InputLabel>
@@ -35,7 +50,7 @@ const Users = ({ search }) => {
           </Box>
         </div>
       </div>
-      <UsersList search={search} sort={sort}/>
+      <UsersList search={search} sort={sort} />
     </div>
   );
 };
