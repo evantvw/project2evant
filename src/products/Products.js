@@ -39,7 +39,7 @@ const Products = ({ search, setOpen, open }) => {
         <h1 className="title">Products</h1>
 
         <div className={`buttons ${open ? "hidden" : ""}`}>
-          <Link className="btn-add-products" to="/add">
+          <Link className="btn-add-products" to="/products/add">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -57,7 +57,7 @@ const Products = ({ search, setOpen, open }) => {
             <span>Add Product</span>
           </Link>
 
-          <Box sx={{ minWidth: 100 }} className="mt-7">
+          <Box sx={{ minWidth: 80 }} className="mt-7">
             <FormControl fullWidth>
               <InputLabel id="filter">Filter</InputLabel>
               <Select
@@ -80,7 +80,7 @@ const Products = ({ search, setOpen, open }) => {
             </FormControl>
           </Box>
 
-          <Box sx={{ minWidth: 100 }} className="mt-7">
+          <Box sx={{ minWidth: 80 }} className="mt-7">
             <FormControl fullWidth>
               <InputLabel id="sort">Sort</InputLabel>
               <Select

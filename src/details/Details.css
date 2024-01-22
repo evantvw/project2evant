@@ -31,6 +31,8 @@
 
   .description {
     @apply pl-3;
+    @apply h-[90%];
+    @apply overflow-y-scroll; 
   }
 
   .description-title {

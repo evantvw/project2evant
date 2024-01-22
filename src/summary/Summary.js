@@ -1,30 +1,39 @@
 import axios from "axios";
 import "./Summary.css";
 import React, { useState, useEffect } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Summary = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
+  const [pending1, setPending1] = useState(false);
+  const [pending2, setPending2] = useState(false);
 
   useEffect(() => {
     async function getProducts() {
+      setPending1(true)
       try {
         const res = await axios.get("https://fakestoreapi.com/products");
         setProducts(res.data);
+        setPending1(false)
       } catch (e) {
         console.log("error : ", e);
+        setPending1(false)
       }
     }
     getProducts();
 
     async function getCategory() {
+      setPending2(true)
       try {
         const res = await axios.get(
           "https://fakestoreapi.com/products/categories"
         );
         setCategory(res.data);
+        setPending2(false)
       } catch (e) {
         console.log("error : ", e);
+        setPending2(false)
       }
     }
     getCategory();
@@ -84,7 +93,7 @@ const Summary = () => {
           </svg>
           <h2 className="label-h2-summary">Products</h2>
         </div>
-        <h2 className="value-h2-summary">{products.length}</h2>
+        <h2 className="value-h2-summary">{pending1? <CircularProgress size="1.5rem" color="inherit" /> : products.length}</h2>
       </div>
 
       <div className="container-card-summary">
@@ -105,7 +114,7 @@ const Summary = () => {
           </svg>
           <h2 className="label-h2-summary">Categories</h2>
         </div>
-        <h2 className="value-h2-summary">{category.length}</h2>
+        <h2 className="value-h2-summary">{pending2? <CircularProgress size="1.5rem" color="inherit" /> : category.length}</h2>
       </div>
 
       <div className="container-card-summary">
@@ -126,12 +135,29 @@ const Summary = () => {
           </svg>
           <h2 className="label-h2-summary">Purchases</h2>
         </div>
-        <h2 className="value-h2-summary">{getPurchases()}</h2>
+        <h2 className="value-h2-summary">{pending1? <CircularProgress size="1.5rem" color="inherit" /> : getPurchases()}</h2>
       </div>
 
       <div className="container-card-summary mr-1 lg:mr-0">
-        <h2 className="label-h2-summary">Average Ratings</h2>
-        <h2 className="value-h2-summary">{getAverageRating()}</h2>
+        <div className="label-summary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 min-w-6 lg:hidden"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
+            />
+          </svg>
+
+          <h2 className="label-h2-summary"> AVG Ratings</h2>
+        </div>
+        <h2 className="value-h2-summary">{pending1? <CircularProgress size="1.5rem" color="inherit" /> : getAverageRating()}</h2>
       </div>
 
       <div className="container-card-summary w-full container-card-revenue">
@@ -152,7 +178,7 @@ const Summary = () => {
           </svg>
           <h2 className="label-h2-summary">Revenues</h2>
         </div>
-        <h2 className="value-h2-summary">{getRevenue()}</h2>
+        <h2 className="value-h2-summary">{pending1? <CircularProgress size="1.5rem" color="inherit" /> : getRevenue()}</h2>
       </div>
     </div>
   );

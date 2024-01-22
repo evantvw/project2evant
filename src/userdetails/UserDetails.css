@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-userdetails {
+    @apply w-3/4;
+    @apply mx-auto;
+    @apply xl:w-[70%];
+    @apply md:w-1/2;
+    @apply sm:w-5/6;
+    @apply sm:min-h-screen;
+  }
+}

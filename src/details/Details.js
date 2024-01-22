@@ -24,7 +24,7 @@ const Details = () => {
 
   return (
     <div className="container-details">
-      <button onClick={() => navigate(-1)} className="btn-back py-2">
+      <button onClick={() => navigate(-1)} className="btn-back">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -48,11 +48,11 @@ const Details = () => {
           src={product.image}
           alt={product.title}
         />
-        <div className="description">
+        <div className="description no-scrollbar">
           <h2 className="description-title">{product.title}</h2>
           <h2 className="description-price">{`$${product.price}`}</h2>
           <h2 className="description-category">{product.category}</h2>
-          <h2 className="text-sm">
+          <h2 className="text-base">
             <span className="font-bold">Description : </span>
             {product.description}
           </h2>

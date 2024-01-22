@@ -8,6 +8,7 @@ import Users from "./users/Users";
 import Settings from "./settings/Settings";
 import AddProduct from "./addproduct/AddProduct";
 import Home from "./home/Home";
+import UserDetails from "./userdetails/UserDetails";
 
 function App() {
   const initialToken = localStorage.getItem("token") || "";
@@ -34,13 +35,13 @@ function App() {
               }
             />
             <Route path="/products/:id" element={<Details />} />
+            <Route path="/products/add" element={<AddProduct />} />
             <Route
               path="/users"
               element={<Users search={search} setOpen={setOpen} open={open} />}
             />
-            {/* <Route path="/users/:id" element={<Details />} /> */}
+            <Route path="/users/:id" element={<UserDetails />} />
             <Route path="/settings" element={<Settings />} />
-            <Route path="/add" element={<AddProduct />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

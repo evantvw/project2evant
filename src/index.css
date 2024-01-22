@@ -48,5 +48,8 @@
     @apply px-6;
     @apply py-4;
   }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
-

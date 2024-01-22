@@ -17,6 +17,9 @@
   .container-piechart {
     @apply mt-5;
     @apply ml-5;
+    @apply p-5;
+    @apply rounded-xl;
+    @apply bg-gray-200;
     @apply lg:w-full;
     @apply md:w-[84%];
     @apply sm:hidden;
