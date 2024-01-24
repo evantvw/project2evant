@@ -3,12 +3,55 @@
 @tailwind utilities;
 
 @layer components {
-  .container-userdetails {
+  .container-user-details {
     @apply w-3/4;
     @apply mx-auto;
     @apply xl:w-[70%];
     @apply md:w-1/2;
     @apply sm:w-5/6;
     @apply sm:min-h-screen;
+  }
+
+  .content-user-details {
+    @apply mt-5;
+    @apply w-3/4;
+    @apply mx-auto;
+  }
+
+  .photo-profile {
+    @apply flex;
+    @apply gap-5;
+    @apply items-center;
+    @apply border;
+    @apply border-gray-300;
+    @apply rounded-lg;
+    @apply p-3;
+    @apply bg-gray-200;
+  }
+
+  .personal-information,
+  .address {
+    @apply border;
+    @apply border-gray-300;
+    @apply rounded-lg;
+    @apply p-3;
+    @apply mt-5;
+    @apply bg-gray-200;
+  }
+
+  .personal-information-description {
+    @apply flex;
+    @apply gap-80;
+    @apply xl:gap-60;
+    @apply lg:gap-36;
+    @apply md:block;
+  }
+
+  .address-description {
+    @apply flex;
+    @apply gap-[22.5rem];
+    @apply xl:gap-[17.5rem];
+    @apply lg:gap-44;
+    @apply md:block;
   }
 }

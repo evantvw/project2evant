@@ -38,10 +38,10 @@ function App() {
             <Route path="/products/add" element={<AddProduct />} />
             <Route
               path="/users"
-              element={<Users search={search} setOpen={setOpen} open={open} />}
+              element={<Users search={search} setOpen={setOpen} />}
             />
             <Route path="/users/:id" element={<UserDetails />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/settings" element={<Settings setOpen={setOpen} open={open} setToken={setToken}/>} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

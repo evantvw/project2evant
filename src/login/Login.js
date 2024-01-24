@@ -21,11 +21,23 @@ const Login = ({ setToken }) => {
     };
 
     try {
+      // get token
       const res = await axios.post("https://fakestoreapi.com/auth/login", user);
       setToken(res.data.token);
-      navigate("/");
-      setIsPending(false);
       localStorage.setItem("token", res.data.token);
+
+      // get User ID
+      const res2 = await axios.get("https://fakestoreapi.com/users");
+      const users = res2.data;
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].username === username) {
+          // setUserID(users[i].id);
+          localStorage.setItem("userID", users[i].id);
+        }
+      }
+
+      setIsPending(false);
+      navigate("/");
     } catch (e) {
       console.log(e);
       setError(e.response.data);

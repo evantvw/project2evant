@@ -25,7 +25,7 @@ const Home = ({ setOpen }) => {
         <h1 className="title">Dashboard</h1>
       </div>
       <Summary />
-      <div className="container-piechart">
+      <div className="container-piechart text-center">
         <Piechart />
       </div>
     </div>

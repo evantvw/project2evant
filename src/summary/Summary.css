@@ -29,6 +29,7 @@
     @apply lg:mr-3;
     @apply sm:w-full;
     @apply sm:mx-auto;
+    @apply shadow-lg;
   }
 
   .container-card-revenue {

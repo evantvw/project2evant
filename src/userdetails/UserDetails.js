@@ -22,7 +22,7 @@ const UserDetails = () => {
   }, [id]);
 
   return (
-    <div className="container-userdetails">
+    <div className="container-user-details">
       <button onClick={() => navigate(-1)} className="btn-back">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -40,9 +40,9 @@ const UserDetails = () => {
         </svg>
         <span>Back</span>
       </button>
-      
-      <div className="mt-3 w-3/4 mx-auto">
-        <div className="photo-profile flex gap-5 items-center border border-gray-300 rounded-lg p-3 bg-gray-200">
+
+      <div className="content-user-details">
+        <div className="photo-profile">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -55,7 +55,7 @@ const UserDetails = () => {
               clipRule="evenodd"
             />
           </svg>
-          <div className="description-userdetails">
+          <div className="description-user-details">
             <h2 className="font-bold text-2xl">
               <span>{user.name && user.name.firstname}</span>{" "}
               <span>{user.name && user.name.lastname}</span>
@@ -68,9 +68,9 @@ const UserDetails = () => {
           </div>
         </div>
 
-        <div className="personal-information border border-gray-300 rounded-lg p-3 mt-5 bg-gray-200">
+        <div className="personal-information">
           <div className="mb-5 text-xl font-bold">Personal Information</div>
-          <div className="personal-information-description flex gap-80  ">
+          <div className="personal-information-description">
             <div className="row1">
               <h2 className="text-lg">First Name</h2>
               <h2 className="mb-5 font-bold">
@@ -79,7 +79,7 @@ const UserDetails = () => {
               <h2 className="text-lg">Email address</h2>
               <h2 className="mb-5 font-bold">{user.email}</h2>
               <h2 className="text-lg">Bio</h2>
-              <h2 className="font-bold">-</h2>
+              <h2 className="font-bold mb-5">-</h2>
             </div>
 
             <div className="row2">
@@ -88,21 +88,21 @@ const UserDetails = () => {
                 {user.name && user.name.lastname}
               </h2>
               <h2 className="text-lg">Phone</h2>
-              <h2 className="font-bold">{user.phone}</h2>
+              <h2 className="font-bold mb-5">{user.phone}</h2>
             </div>
           </div>
         </div>
 
-        <div className="address border border-gray-300 rounded-lg p-3 mt-5 bg-gray-200">
+        <div className="address mb-5">
           <div className="mb-5 text-xl font-bold">Address</div>
-          <div className="address-description flex gap-[22.5rem]  ">
+          <div className="address-description ">
             <div className="row1">
               <h2 className="text-lg">Street</h2>
               <h2 className="mb-5 font-bold">
                 {user.address && user.address.street}
               </h2>
               <h2 className="text-lg">Zipcode</h2>
-              <h2 className="font-bold">
+              <h2 className="mb-5 font-bold">
                 {user.address && user.address.zipcode}
               </h2>
             </div>

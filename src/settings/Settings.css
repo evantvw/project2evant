@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container-settings {
+    @apply p-7;
+    @apply xl:w-4/6;
+    @apply sm:w-full;
+    /* @apply sm:h-screen; */
+  }
+
+  .head-settings {
+    @apply p-5;
+  }
+
+  .personal-account, .delete-account {
+    @apply flex;
+    @apply p-5;
+  }
+
+  .name-settings {
+    @apply flex;
+    @apply gap-6;
+    @apply mb-2;
+  }
+
+  .email-settings, .username-settings {
+    @apply w-full;
+    @apply mb-2;
+  }
+
+  .btn-save {
+    @apply bg-indigo-600;
+    @apply hover:bg-gray-800;
+    @apply px-4;
+    @apply py-2;
+    @apply rounded-lg;
+    @apply text-gray-100;
+    @apply mt-3;
+  }
+
+  .btn-delete {
+    @apply bg-red-500;
+    @apply text-gray-100;
+    @apply font-bold;
+    @apply px-3;
+    @apply py-2;
+    @apply rounded-lg;
+    @apply hover:bg-red-600;
+  }
+}
