@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import Piechart from "../piechart/Piechart";
 import Summary from "../summary/Summary";
 import "./Home.css";
+import { DarkMode } from "../context/DarkMode";
 
-const Home = ({ setOpen }) => {
+const Home = ({ setOpen, open }) => {
+  const { isDarkMode } = useContext(DarkMode);
   return (
-    <div className="container-home">
+    <div className={`container-home ${open? "hidden" : ""}`}>
       <div className="head-home">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -12,7 +15,7 @@ const Home = ({ setOpen }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 hidden sm:block"
+          className={`w-6 h-6 hidden sm:block ${isDarkMode? "text-gray-100" : ""}`}
           onClick={() => setOpen(true)}
         >
           <path
@@ -22,7 +25,7 @@ const Home = ({ setOpen }) => {
           />
         </svg>
 
-        <h1 className="title">Dashboard</h1>
+        <h1 className={`title ${isDarkMode? "text-gray-100" : ""}`}>Dashboard</h1>
       </div>
       <Summary />
       <div className="container-piechart text-center">

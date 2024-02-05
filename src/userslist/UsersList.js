@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserItem from "../useritem/UserItem";
+import { DarkMode } from "../context/DarkMode";
 
 const UsersList = ({ search, sort }) => {
   const [users, setUsers] = useState([]);
+  const { isDarkMode } = useContext(DarkMode);
   useEffect(() => {
     const getUsers = async () => {
       try {
@@ -20,7 +22,7 @@ const UsersList = ({ search, sort }) => {
   return (
     <>
       <table className="ml-5 lg:hidden">
-        <thead className="text-gray-600">
+        <thead className={`${isDarkMode? "text-gray-100" : "text-gray-600"}`}>
           {users.filter((user) =>
             user.username.toLowerCase().includes(search.trim().toLowerCase())
           ).length > 0 && (
@@ -43,7 +45,7 @@ const UsersList = ({ search, sort }) => {
             </tr>
           )}
         </thead>
-        <tbody className="text-gray-600">
+        <tbody className={`${isDarkMode? "text-gray-100" : "text-gray-600"}`}>
           {users.length > 0 &&
             users
               .filter((user) =>

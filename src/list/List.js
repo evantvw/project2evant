@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Items from "../items/Items";
+import { DarkMode } from "../context/DarkMode";
 
 const List = ({ search, filter, sort }) => {
   const [products, setProducts] = useState([]);
+  const { isDarkMode } = useContext(DarkMode);
 
   useEffect(() => {
     async function getProducts() {
@@ -22,7 +24,7 @@ const List = ({ search, filter, sort }) => {
   return (
     <>
       <table className="ml-5 lg:hidden">
-        <thead className="text-gray-600">
+        <thead className={`${isDarkMode ? "text-gray-100" : "text-gray-600"}`}>
           {products.filter((product) =>
             product.title.toLowerCase().includes(search.trim().toLowerCase())
           ).length > 0 && (
@@ -46,7 +48,7 @@ const List = ({ search, filter, sort }) => {
           )}
         </thead>
 
-        <tbody className="text-gray-600">
+        <tbody className={`${isDarkMode ? "text-gray-100" : "text-gray-600"}`}>
           {products.length > 0 &&
             products
               .filter((product) =>

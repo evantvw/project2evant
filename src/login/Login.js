@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
+import { DarkMode } from "../context/DarkMode";
 
 const Login = ({ setToken }) => {
   const [password, setPassword] = useState("");
@@ -10,6 +11,7 @@ const Login = ({ setToken }) => {
   const [isPending, setIsPending] = useState(false);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState("");
+  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -48,58 +50,70 @@ const Login = ({ setToken }) => {
   };
 
   return (
-    <div className="container-login">
-      <h1 className="logo-login">AdHub</h1>
-      <h2 className="h2-login">Sign in to your account</h2>
+    <div
+      className={`absolute h-screen w-full ${isDarkMode ? "bg-slate-800" : ""}`}
+    >
+      <button
+        className="absolute p-3 bg-indigo-800 rounded-2xl top-3 right-6"
+        onClick={() => setIsDarkMode(!isDarkMode)}
+      >
+        {isDarkMode ? "☀️" : "🌙"}
+      </button>
+      <div className="container-login">
+        <h1 className="logo-login">AdHub</h1>
+        <h2 className={`h2-login ${isDarkMode ? "text-gray-100" : ""}`}>
+          Sign in to your account
+        </h2>
 
-      <div className="container-form-login">
-        <form className="space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username" className="label-login">
-              Username
-            </label>
-            <div className="mt-2">
-              <input
-                id="username"
-                name="username"
-                type="text"
-                required
-                className="input-login"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
+        <div className="container-form-login">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="username" className={`label-login ${isDarkMode? "text-gray-100" : ""}`}>
+                Username
+              </label>
+              <div className="mt-2">
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  required
+                  className="input-login"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label htmlFor="password" className="label-login">
-              Password
-            </label>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="input-login"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+            <div>
+              <label htmlFor="password" className={`label-login ${isDarkMode? "text-gray-100" : ""}`}>
+                Password
+              </label>
+              <div className="mt-2">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="input-login"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <button type="submit" className="btn-submit-login bg-indigo-600">
-              {isPending ? (
-                <CircularProgress size="1.5rem" color="inherit" />
-              ) : (
-                "Sign In"
-              )}
-            </button>
-          </div>
-          {isError && <div className="error-msg-login">*{error}</div>}
-        </form>
+            <div>
+              <button type="submit" className="btn-submit-login bg-indigo-600">
+                {isPending ? (
+                  <CircularProgress size="1.5rem" color="inherit" />
+                ) : (
+                  "Sign In"
+                )}
+              </button>
+            </div>
+            {isError && <div className="error-msg-login">*{error}</div>}
+          </form>
+        </div>
       </div>
     </div>
   );

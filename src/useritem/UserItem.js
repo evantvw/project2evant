@@ -7,7 +7,7 @@ const UserItem = ({ data }) => {
       <tr className="row">
         <td className="data">
           <Link to={`/users/${data.id}`}>
-            <h3 className="text-indigo-600 font-extrabold text-xl">{data.id}</h3>
+            <h3 className="text-indigo-500 font-extrabold text-xl">{data.id}</h3>
           </Link>
         </td>
         <td className="data">

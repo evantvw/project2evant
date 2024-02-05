@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Settings.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
+import { DarkMode } from "../context/DarkMode";
 
 const Settings = ({ setOpen, setToken }) => {
-  // const [currUser, setCurrUser] = useState({});
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [pending, setPending] = useState(false);
   const userID = localStorage.getItem("userID");
+  const { isDarkMode } = useContext(DarkMode);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -73,7 +74,9 @@ const Settings = ({ setOpen, setToken }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 hidden sm:block"
+          className={`w-6 h-6 hidden sm:block ${
+            isDarkMode ? "text-gray-100" : ""
+          }`}
           onClick={() => setOpen(true)}
         >
           <path
@@ -82,13 +85,23 @@ const Settings = ({ setOpen, setToken }) => {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
-        <h1 className="title">Settings</h1>
+        <h1 className={`title ${isDarkMode ? "text-gray-100" : ""}`}>
+          Settings
+        </h1>
       </div>
 
       <div className="personal-account xl:gap-10 md:flex-col">
         <div className="w-[40%] md:w-full">
-          <h2 className="text-xl font-bold">Personal Information</h2>
-          <p className="w-3/4 text-justify sm:w-full">
+          <h2
+            className={`text-xl font-bold ${isDarkMode ? "text-gray-100" : ""}`}
+          >
+            Personal Information
+          </h2>
+          <p
+            className={`w-3/4 text-justify sm:w-full ${
+              isDarkMode ? "text-gray-100" : ""
+            }`}
+          >
             You can update your personal information here, click save after
             updating your information
           </p>
@@ -96,7 +109,7 @@ const Settings = ({ setOpen, setToken }) => {
         <form className="w-full" onSubmit={handleUpdate}>
           <div className="name-settings">
             <div className="w-full">
-              <label htmlFor="firstname" className="block">
+              <label htmlFor="firstname" className={`block ${isDarkMode? "text-gray-100" : ""}`}>
                 First name
               </label>
               <input
@@ -110,7 +123,7 @@ const Settings = ({ setOpen, setToken }) => {
             </div>
 
             <div className="w-full">
-              <label htmlFor="lastname" className="block">
+              <label htmlFor="lastname" className={`block ${isDarkMode? "text-gray-100" : ""}`}>
                 Last name
               </label>
               <input
@@ -125,7 +138,7 @@ const Settings = ({ setOpen, setToken }) => {
           </div>
 
           <div className="email-settings">
-            <label htmlFor="email" className="block">
+            <label htmlFor="email" className={`block ${isDarkMode? "text-gray-100" : ""}`}>
               Email
             </label>
             <input
@@ -139,7 +152,7 @@ const Settings = ({ setOpen, setToken }) => {
           </div>
 
           <div className="username-settings">
-            <label htmlFor="username" className="block">
+            <label htmlFor="username" className={`block ${isDarkMode? "text-gray-100" : ""}`}>
               Username
             </label>
             <input
@@ -164,8 +177,16 @@ const Settings = ({ setOpen, setToken }) => {
 
       <div className="delete-account mt-10 xl:gap-10 md:flex-col">
         <div className="w-[40%] md:w-full">
-          <h2 className="text-xl font-bold">Delete account</h2>
-          <p className="w-3/4 text-justify sm:w-full">
+          <h2
+            className={`text-xl font-bold ${isDarkMode ? "text-gray-100" : ""}`}
+          >
+            Delete account
+          </h2>
+          <p
+            className={`w-3/4 text-justify sm:w-full ${
+              isDarkMode ? "text-gray-100" : ""
+            }`}
+          >
             You can delete your account here. This action is not reversible. All
             information related to this account will be deleted permanently.
           </p>

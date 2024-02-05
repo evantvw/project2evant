@@ -7,6 +7,7 @@
     @apply p-7;
     @apply w-4/6;
     @apply sm:w-full;
+    @apply min-h-screen;
   }
 
   .head-users {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import List from "../list/List";
 import "./Products.css";
 import Box from "@mui/material/Box";
@@ -7,10 +7,13 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Link } from "react-router-dom";
+import { DarkMode } from "../context/DarkMode";
+import OutlinedInput from "@mui/material/OutlinedInput";
 
 const Products = ({ search, setOpen, open }) => {
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("?sort=asc");
+  const { isDarkMode } = useContext(DarkMode);
   const handleChangeFilter = (event) => {
     setFilter(event.target.value);
   };
@@ -18,6 +21,7 @@ const Products = ({ search, setOpen, open }) => {
     setSort(event.target.value);
   };
 
+  
   return (
     <div className="container-products">
       <div className="head-products">
@@ -27,7 +31,7 @@ const Products = ({ search, setOpen, open }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 hidden sm:block"
+          className={`w-6 h-6 hidden sm:block ${isDarkMode? "text-gray-100" : ""}`}
           onClick={() => setOpen(true)}
         >
           <path
@@ -36,7 +40,9 @@ const Products = ({ search, setOpen, open }) => {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
-        <h1 className="title">Products</h1>
+        <h1 className={`title ${isDarkMode ? "text-gray-100" : ""}`}>
+          Products
+        </h1>
 
         <div className={`buttons ${open ? "hidden" : ""}`}>
           <Link className="btn-add-products" to="/products/add">
@@ -59,12 +65,26 @@ const Products = ({ search, setOpen, open }) => {
 
           <Box sx={{ minWidth: 80 }} className="mt-7">
             <FormControl fullWidth>
-              <InputLabel id="filter">Filter</InputLabel>
+              <InputLabel
+                id="filter"
+                sx={isDarkMode ? { color: "#f7fafc" } : {}}
+              >
+                Filter
+              </InputLabel>
               <Select
                 labelId="filter"
                 id="filter-select"
                 value={filter}
                 label="Filter"
+                input={<OutlinedInput label="filter" />} // Use OutlinedInput
+                sx={
+                  isDarkMode
+                    ? {
+                        "& fieldset": { borderColor: "#f7fafc" },
+                        color: "#f7fafc",
+                      }
+                    : {}
+                } // Customize border color
                 onChange={handleChangeFilter}
               >
                 <MenuItem value={""}>default</MenuItem>
@@ -82,12 +102,23 @@ const Products = ({ search, setOpen, open }) => {
 
           <Box sx={{ minWidth: 80 }} className="mt-7">
             <FormControl fullWidth>
-              <InputLabel id="sort">Sort</InputLabel>
+              <InputLabel id="sort" sx={isDarkMode ? { color: "#f7fafc" } : {}}>
+                Sort
+              </InputLabel>
               <Select
                 labelId="sort"
                 id="sort-select"
                 value={sort}
                 label="Sort"
+                input={<OutlinedInput label="Sort" />} // Use OutlinedInput
+                sx={
+                  isDarkMode
+                    ? {
+                        "& fieldset": { borderColor: "#f7fafc" },
+                        color: "#f7fafc",
+                      }
+                    : {}
+                } // Customize border color
                 onChange={handleChangeSort}
               >
                 <MenuItem value={"?sort=asc"}>Ascending</MenuItem>

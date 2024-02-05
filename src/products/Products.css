@@ -7,6 +7,7 @@
     @apply p-7;
     @apply xl:w-4/6;
     @apply sm:w-full;
+    @apply min-h-screen;
   }
 
   .head-products {
@@ -17,7 +18,6 @@
   .btn-add-products {
     @apply py-4;
     @apply px-3;
-    @apply border;
     @apply rounded-lg;
     @apply mt-7;
     @apply bg-indigo-600;

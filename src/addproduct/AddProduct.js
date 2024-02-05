@@ -3,8 +3,9 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import "./AddProduct.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
+import { DarkMode } from "../context/DarkMode";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const AddProduct = () => {
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
   const [pending, setPending] = useState(false);
+  const { isDarkMode } = useContext(DarkMode);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,7 +62,7 @@ const AddProduct = () => {
         <span>Back</span>
       </button>
 
-      <h1 className="title">Add New Products</h1>
+      <h1 className={`title ${isDarkMode? "text-gray-100" : ""}`}>Add New Products</h1>
 
       <Box
         component="form"
@@ -70,7 +72,7 @@ const AddProduct = () => {
         }}
         noValidate
         autoComplete="off"
-        className="flex flex-col gap-3 mt-10"
+        className={`flex flex-col gap-3 mt-10 ${isDarkMode? "bg-gray-200 p-4 rounded-xl sm:p-3" : ""}`}
         onSubmit={handleSubmit}
       >
         <div className="flex gap-3">
