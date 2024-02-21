@@ -10,10 +10,11 @@ import AddProduct from "./addproduct/AddProduct";
 import Home from "./home/Home";
 import UserDetails from "./userdetails/UserDetails";
 import { DarkMode } from "./context/DarkMode";
+import { useSelector } from "react-redux";
+import { getToken } from "./authSlice";
 
 function App() {
-  const initialToken = localStorage.getItem("token") || "";
-  const [token, setToken] = useState(initialToken);
+  const token = useSelector(getToken);
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
@@ -22,12 +23,7 @@ function App() {
     <BrowserRouter>
       {token ? (
         <div className={`flex bg-gray-100 ${isDarkMode ? "bg-slate-800" : ""}`}>
-          <Sidebar
-            setToken={setToken}
-            setSearch={setSearch}
-            open={open}
-            setOpen={setOpen}
-          />
+          <Sidebar setSearch={setSearch} open={open} setOpen={setOpen} />
           <button
             className={`absolute p-3 bg-indigo-800 rounded-2xl top-3 right-6 ${
               open ? "hidden" : ""
@@ -53,16 +49,14 @@ function App() {
             <Route path="/users/:id" element={<UserDetails />} />
             <Route
               path="/settings"
-              element={
-                <Settings setOpen={setOpen} open={open} setToken={setToken} />
-              }
+              element={<Settings setOpen={setOpen} open={open} />}
             />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
       ) : (
         <Routes>
-          <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}

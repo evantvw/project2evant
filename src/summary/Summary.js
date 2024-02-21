@@ -1,43 +1,30 @@
-import axios from "axios";
 import "./Summary.css";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchData,
+  getCategories,
+  getCategoryPending,
+  getProductPending,
+  getProducts,
+} from "../fetchSlice";
 
 const Summary = () => {
-  const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState([]);
-  const [pending1, setPending1] = useState(false);
-  const [pending2, setPending2] = useState(false);
+  const dispatch = useDispatch();
+  const categories = useSelector(getCategories);
+  const categoryPending = useSelector(getCategoryPending);
+  const products = useSelector(getProducts);
+  const productPending = useSelector(getProductPending);
 
   useEffect(() => {
-    async function getProducts() {
-      setPending1(true)
-      try {
-        const res = await axios.get("https://fakestoreapi.com/products");
-        setProducts(res.data);
-        setPending1(false)
-      } catch (e) {
-        console.log("error : ", e);
-        setPending1(false)
-      }
-    }
-    getProducts();
+    // fetch Products
+    const fetchingData = async () => {
+      await dispatch(fetchData());
+    };
 
-    async function getCategory() {
-      setPending2(true)
-      try {
-        const res = await axios.get(
-          "https://fakestoreapi.com/products/categories"
-        );
-        setCategory(res.data);
-        setPending2(false)
-      } catch (e) {
-        console.log("error : ", e);
-        setPending2(false)
-      }
-    }
-    getCategory();
-  }, []);
+    fetchingData();
+  }, [dispatch]);
 
   function getPurchases() {
     let total = 0;
@@ -93,7 +80,13 @@ const Summary = () => {
           </svg>
           <h2 className="label-h2-summary">Products</h2>
         </div>
-        <h2 className="value-h2-summary">{pending1? <CircularProgress size="1.5rem" color="inherit" /> : products.length}</h2>
+        <h2 className="value-h2-summary">
+          {productPending ? (
+            <CircularProgress size="1.5rem" color="inherit" />
+          ) : (
+            products.length
+          )}
+        </h2>
       </div>
 
       <div className="container-card-summary">
@@ -114,7 +107,13 @@ const Summary = () => {
           </svg>
           <h2 className="label-h2-summary">Categories</h2>
         </div>
-        <h2 className="value-h2-summary">{pending2? <CircularProgress size="1.5rem" color="inherit" /> : category.length}</h2>
+        <h2 className="value-h2-summary">
+          {categoryPending ? (
+            <CircularProgress size="1.5rem" color="inherit" />
+          ) : (
+            categories.length
+          )}
+        </h2>
       </div>
 
       <div className="container-card-summary">
@@ -135,7 +134,13 @@ const Summary = () => {
           </svg>
           <h2 className="label-h2-summary">Purchases</h2>
         </div>
-        <h2 className="value-h2-summary">{pending1? <CircularProgress size="1.5rem" color="inherit" /> : getPurchases()}</h2>
+        <h2 className="value-h2-summary">
+          {productPending ? (
+            <CircularProgress size="1.5rem" color="inherit" />
+          ) : (
+            getPurchases()
+          )}
+        </h2>
       </div>
 
       <div className="container-card-summary mr-1 lg:mr-0">
@@ -157,7 +162,13 @@ const Summary = () => {
 
           <h2 className="label-h2-summary"> AVG Ratings</h2>
         </div>
-        <h2 className="value-h2-summary">{pending1? <CircularProgress size="1.5rem" color="inherit" /> : getAverageRating()}</h2>
+        <h2 className="value-h2-summary">
+          {productPending ? (
+            <CircularProgress size="1.5rem" color="inherit" />
+          ) : (
+            getAverageRating()
+          )}
+        </h2>
       </div>
 
       <div className="container-card-summary w-full container-card-revenue">
@@ -178,7 +189,13 @@ const Summary = () => {
           </svg>
           <h2 className="label-h2-summary">Revenues</h2>
         </div>
-        <h2 className="value-h2-summary">{pending1? <CircularProgress size="1.5rem" color="inherit" /> : getRevenue()}</h2>
+        <h2 className="value-h2-summary">
+          {productPending ? (
+            <CircularProgress size="1.5rem" color="inherit" />
+          ) : (
+            getRevenue()
+          )}
+        </h2>
       </div>
     </div>
   );

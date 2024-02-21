@@ -1,18 +1,26 @@
 import { useContext, useState } from "react";
 import "./Login.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import { DarkMode } from "../context/DarkMode";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchToken,
+  fetchUserData,
+  loginFailure,
+  userInfo,
+} from "../authSlice";
+import { getIsError } from "../authSlice";
 
-const Login = ({ setToken }) => {
+const Login = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [isPending, setIsPending] = useState(false);
-  const [isError, setIsError] = useState(false);
   const [error, setError] = useState("");
+  const [isPending, setIsPending] = useState(false);
   const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
+  const isError = useSelector(getIsError);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,27 +32,18 @@ const Login = ({ setToken }) => {
 
     try {
       // get token
-      const res = await axios.post("https://fakestoreapi.com/auth/login", user);
-      setToken(res.data.token);
-      localStorage.setItem("token", res.data.token);
+      await dispatch(fetchToken(user));
+      await dispatch(userInfo({ username, password }));
 
       // get User ID
-      const res2 = await axios.get("https://fakestoreapi.com/users");
-      const users = res2.data;
-      for (let i = 0; i < users.length; i++) {
-        if (users[i].username === username) {
-          // setUserID(users[i].id);
-          localStorage.setItem("userID", users[i].id);
-        }
-      }
+      await dispatch(fetchUserData());
 
       setIsPending(false);
       navigate("/");
     } catch (e) {
       console.log(e);
       setError(e.response.data);
-      console.log(e.response.data);
-      setIsError(true);
+      dispatch(loginFailure());
       setIsPending(false);
     }
   };
@@ -68,7 +67,10 @@ const Login = ({ setToken }) => {
         <div className="container-form-login">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="username" className={`label-login ${isDarkMode? "text-gray-100" : ""}`}>
+              <label
+                htmlFor="username"
+                className={`label-login ${isDarkMode ? "text-gray-100" : ""}`}
+              >
                 Username
               </label>
               <div className="mt-2">
@@ -85,7 +87,10 @@ const Login = ({ setToken }) => {
             </div>
 
             <div>
-              <label htmlFor="password" className={`label-login ${isDarkMode? "text-gray-100" : ""}`}>
+              <label
+                htmlFor="password"
+                className={`label-login ${isDarkMode ? "text-gray-100" : ""}`}
+              >
                 Password
               </label>
               <div className="mt-2">

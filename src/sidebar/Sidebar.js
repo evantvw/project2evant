@@ -1,11 +1,14 @@
 import "./Sidebar.css";
 import { useNavigate, NavLink } from "react-router-dom";
+import { logout } from "../authSlice";
+import { useDispatch } from "react-redux";
 
-const Sidebar = ({ setToken, setSearch, setOpen, open }) => {
+const Sidebar = ({ setSearch, setOpen, open }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleLogOut = () => {
-    localStorage.removeItem("token");
-    setToken("");
+    dispatch(logout());
     navigate("/login");
   };
 

@@ -4,8 +4,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import { DarkMode } from "../context/DarkMode";
+import { useDispatch } from "react-redux";
+import { logout } from "../authSlice";
 
-const Settings = ({ setOpen, setToken }) => {
+const Settings = ({ setOpen }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -14,6 +16,7 @@ const Settings = ({ setOpen, setToken }) => {
   const userID = localStorage.getItem("userID");
   const { isDarkMode } = useContext(DarkMode);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getCurrUser = async () => {
@@ -57,8 +60,7 @@ const Settings = ({ setOpen, setToken }) => {
         `https://fakestoreapi.com/users/${userID}`
       );
       console.log(deleteRes);
-      localStorage.removeItem("token");
-      setToken("");
+      dispatch(logout());
       navigate("/login");
     } catch (e) {
       console.log("error", e);
@@ -109,7 +111,10 @@ const Settings = ({ setOpen, setToken }) => {
         <form className="w-full" onSubmit={handleUpdate}>
           <div className="name-settings">
             <div className="w-full">
-              <label htmlFor="firstname" className={`block ${isDarkMode? "text-gray-100" : ""}`}>
+              <label
+                htmlFor="firstname"
+                className={`block ${isDarkMode ? "text-gray-100" : ""}`}
+              >
                 First name
               </label>
               <input
@@ -123,7 +128,10 @@ const Settings = ({ setOpen, setToken }) => {
             </div>
 
             <div className="w-full">
-              <label htmlFor="lastname" className={`block ${isDarkMode? "text-gray-100" : ""}`}>
+              <label
+                htmlFor="lastname"
+                className={`block ${isDarkMode ? "text-gray-100" : ""}`}
+              >
                 Last name
               </label>
               <input
@@ -138,7 +146,10 @@ const Settings = ({ setOpen, setToken }) => {
           </div>
 
           <div className="email-settings">
-            <label htmlFor="email" className={`block ${isDarkMode? "text-gray-100" : ""}`}>
+            <label
+              htmlFor="email"
+              className={`block ${isDarkMode ? "text-gray-100" : ""}`}
+            >
               Email
             </label>
             <input
@@ -152,7 +163,10 @@ const Settings = ({ setOpen, setToken }) => {
           </div>
 
           <div className="username-settings">
-            <label htmlFor="username" className={`block ${isDarkMode? "text-gray-100" : ""}`}>
+            <label
+              htmlFor="username"
+              className={`block ${isDarkMode ? "text-gray-100" : ""}`}
+            >
               Username
             </label>
             <input
