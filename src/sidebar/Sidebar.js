@@ -1,11 +1,13 @@
 import "./Sidebar.css";
 import { useNavigate, NavLink } from "react-router-dom";
 import { logout } from "../authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { closeSideBar, getOpen, setSearch } from "../sideBarSlice";
 
-const Sidebar = ({ setSearch, setOpen, open }) => {
+const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const open = useSelector(getOpen);
 
   const handleLogOut = () => {
     dispatch(logout());
@@ -23,7 +25,7 @@ const Sidebar = ({ setSearch, setOpen, open }) => {
           strokeWidth={1.5}
           stroke="currentColor"
           className="w-6 h-6 hidden sm:block sm:text-gray-100"
-          onClick={() => setOpen(false)}
+          onClick={() => dispatch(closeSideBar())}
         >
           <path
             strokeLinecap="round"
@@ -55,7 +57,7 @@ const Sidebar = ({ setSearch, setOpen, open }) => {
           type="text"
           className="input-search"
           placeholder="Search"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => dispatch(setSearch(e.target.value))}
         />
       </div>
 
@@ -66,7 +68,7 @@ const Sidebar = ({ setSearch, setOpen, open }) => {
             className={({ isActive }) =>
               isActive ? "dashboard bg-gray-800" : "dashboard"
             }
-            onClick={() => setOpen(false)}
+            onClick={() => dispatch(closeSideBar())}
           >
             <svg
               className="w-5 h-5"
@@ -91,7 +93,7 @@ const Sidebar = ({ setSearch, setOpen, open }) => {
             className={({ isActive }) =>
               isActive ? "users bg-gray-800" : "users"
             }
-            onClick={() => setOpen(false)}
+            onClick={() => dispatch(closeSideBar())}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +118,7 @@ const Sidebar = ({ setSearch, setOpen, open }) => {
             className={({ isActive }) =>
               isActive ? "products bg-gray-800" : "products"
             }
-            onClick={() => setOpen(false)}
+            onClick={() => dispatch(closeSideBar())}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +143,7 @@ const Sidebar = ({ setSearch, setOpen, open }) => {
             className={({ isActive }) =>
               isActive ? "settings bg-gray-800" : "settings"
             }
-            onClick={() => setOpen(false)}
+            onClick={() => dispatch(closeSideBar())}
           >
             <svg
               className="w-5 h-5"

@@ -8,15 +8,19 @@ import { useState, useContext } from "react";
 import UsersList from "../userslist/UsersList";
 import { DarkMode } from "../context/DarkMode";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { useDispatch, useSelector } from "react-redux";
+import { getOpen, openSidebar } from "../sideBarSlice";
 
-const Users = ({ search, setOpen, open }) => {
+const Users = () => {
   const [sort, setSort] = useState("?sort=asc");
   const { isDarkMode } = useContext(DarkMode);
+  const dispatch = useDispatch();
+  const open = useSelector(getOpen);
+
   const handleChangeSort = (event) => {
     setSort(event.target.value);
   };
 
-  console.log(open)
   return (
     <div className="container-users">
       <div className="head-users">
@@ -29,7 +33,7 @@ const Users = ({ search, setOpen, open }) => {
           className={`w-6 h-6 hidden sm:block ${
             isDarkMode ? "text-gray-100" : ""
           }`}
-          onClick={() => setOpen(true)}
+          onClick={() => dispatch(openSidebar())}
         >
           <path
             strokeLinecap="round"
@@ -70,7 +74,7 @@ const Users = ({ search, setOpen, open }) => {
       </div>
 
       <div className="lg:w-full overflow-x-auto">
-        <UsersList search={search} sort={sort} />
+        <UsersList sort={sort} />
       </div>
     </div>
   );

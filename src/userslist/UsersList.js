@@ -4,11 +4,13 @@ import { DarkMode } from "../context/DarkMode";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData, getUserPending, getUsers } from "../fetchSlice";
 import CircularProgress from "@mui/material/CircularProgress";
+import { getSearch } from "../sideBarSlice";
 
-const UsersList = ({ search, sort }) => {
+const UsersList = ({ sort }) => {
   const dispatch = useDispatch();
   const users = useSelector(getUsers);
   const userPending = useSelector(getUserPending);
+  const search = useSelector(getSearch);
   const { isDarkMode } = useContext(DarkMode);
   useEffect(() => {
     const getUsers = async () => {

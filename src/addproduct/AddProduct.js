@@ -4,36 +4,30 @@ import CircularProgress from "@mui/material/CircularProgress";
 import "./AddProduct.css";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import axios from "axios";
 import { DarkMode } from "../context/DarkMode";
+import { useDispatch } from "react-redux";
+import { uploadProduct } from "../crudSlice";
 
 const AddProduct = () => {
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-  const [category, setCategory] = useState("");
+  const dispatch = useDispatch();
+
+  const [formData, setFormData] = useState({
+    title: "",
+    price: "",
+    description: "",
+    image: "",
+    category: "",
+  });
   const [pending, setPending] = useState(false);
   const { isDarkMode } = useContext(DarkMode);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setPending(true);
-    const product = {
-      title: title,
-      price: price,
-      description: description,
-      image: image,
-      category: category,
-    };
 
     try {
-      const res = await axios.post(
-        "https://fakestoreapi.com/products",
-        product
-      );
-      console.log(res);
+      dispatch(uploadProduct({ formData }));
       navigate("/products");
       setPending(false);
     } catch (e) {
@@ -62,7 +56,9 @@ const AddProduct = () => {
         <span>Back</span>
       </button>
 
-      <h1 className={`title ${isDarkMode? "text-gray-100" : ""}`}>Add New Products</h1>
+      <h1 className={`title ${isDarkMode ? "text-gray-100" : ""}`}>
+        Add New Products
+      </h1>
 
       <Box
         component="form"
@@ -72,7 +68,9 @@ const AddProduct = () => {
         }}
         noValidate
         autoComplete="off"
-        className={`flex flex-col gap-3 mt-10 ${isDarkMode? "bg-gray-200 p-4 rounded-xl sm:p-3" : ""}`}
+        className={`flex flex-col gap-3 mt-10 ${
+          isDarkMode ? "bg-gray-200 p-4 rounded-xl sm:p-3" : ""
+        }`}
         onSubmit={handleSubmit}
       >
         <div className="flex gap-3">
@@ -81,16 +79,26 @@ const AddProduct = () => {
             label="title"
             id="title"
             placeholder="Enter product's title here"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={formData.title}
+            onChange={(e) =>
+              setFormData((prevState) => ({
+                ...prevState,
+                title: e.target.value,
+              }))
+            }
           />
           <TextField
             fullWidth
             label="price"
             id="price"
             placeholder="Enter product's price here"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            value={formData.price}
+            onChange={(e) =>
+              setFormData((prevState) => ({
+                ...prevState,
+                price: e.target.value,
+              }))
+            }
           />
         </div>
         <TextField
@@ -99,8 +107,13 @@ const AddProduct = () => {
           multiline
           rows={7}
           placeholder="Enter product's description here"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={formData.description}
+          onChange={(e) =>
+            setFormData((prevState) => ({
+              ...prevState,
+              description: e.target.value,
+            }))
+          }
         />
         <div className="flex gap-3">
           <TextField
@@ -108,16 +121,26 @@ const AddProduct = () => {
             label="image link"
             id="image"
             placeholder="paste your product's image link here"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            value={formData.image}
+            onChange={(e) =>
+              setFormData((prevState) => ({
+                ...prevState,
+                image: e.target.value,
+              }))
+            }
           />
           <TextField
             fullWidth
             label="category"
             id="category"
             placeholder="Enter product's category here"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            value={formData.category}
+            onChange={(e) =>
+              setFormData((prevState) => ({
+                ...prevState,
+                category: e.target.value,
+              }))
+            }
           />
         </div>
 

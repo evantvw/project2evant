@@ -9,11 +9,16 @@ import Select from "@mui/material/Select";
 import { Link } from "react-router-dom";
 import { DarkMode } from "../context/DarkMode";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { getOpen, getSearch, openSidebar } from "../sideBarSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const Products = ({ search, setOpen, open }) => {
+const Products = () => {
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("?sort=asc");
   const { isDarkMode } = useContext(DarkMode);
+  const open = useSelector(getOpen);
+  const search = useSelector(getSearch);
+  const dispatch = useDispatch();
   const handleChangeFilter = (event) => {
     setFilter(event.target.value);
   };
@@ -21,7 +26,6 @@ const Products = ({ search, setOpen, open }) => {
     setSort(event.target.value);
   };
 
-  
   return (
     <div className="container-products">
       <div className="head-products">
@@ -31,8 +35,10 @@ const Products = ({ search, setOpen, open }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`w-6 h-6 hidden sm:block ${isDarkMode? "text-gray-100" : ""}`}
-          onClick={() => setOpen(true)}
+          className={`w-6 h-6 hidden sm:block ${
+            isDarkMode ? "text-gray-100" : ""
+          }`}
+          onClick={() => dispatch(openSidebar())}
         >
           <path
             strokeLinecap="round"

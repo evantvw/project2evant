@@ -56,6 +56,9 @@ const fetchSlice = createSlice({
         state.product.pending = true;
         state.category.pending = true;
         state.user.pending = true;
+        state.product.products = [];
+        state.category.categories = [];
+        state.user.users = [];
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         state.product.pending = false;

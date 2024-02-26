@@ -33,7 +33,7 @@ const Login = () => {
     try {
       // get token
       await dispatch(fetchToken(user));
-      await dispatch(userInfo({ username, password }));
+      dispatch(userInfo({ username, password }));
 
       // get User ID
       await dispatch(fetchUserData());

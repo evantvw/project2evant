@@ -3,9 +3,13 @@ import Piechart from "../piechart/Piechart";
 import Summary from "../summary/Summary";
 import "./Home.css";
 import { DarkMode } from "../context/DarkMode";
+import { useDispatch, useSelector } from "react-redux";
+import { getOpen, openSidebar } from "../sideBarSlice";
 
-const Home = ({ setOpen, open }) => {
+const Home = () => {
+  const dispatch = useDispatch()
   const { isDarkMode } = useContext(DarkMode);
+  const open = useSelector(getOpen)
   return (
     <div className={`container-home ${open? "hidden" : ""}`}>
       <div className="head-home">
@@ -16,7 +20,7 @@ const Home = ({ setOpen, open }) => {
           strokeWidth={1.5}
           stroke="currentColor"
           className={`w-6 h-6 hidden sm:block ${isDarkMode? "text-gray-100" : ""}`}
-          onClick={() => setOpen(true)}
+          onClick={() => dispatch(openSidebar())}
         >
           <path
             strokeLinecap="round"
